@@ -1,0 +1,41 @@
+<mat-sidenav-container fullscreen>
+
+  <mat-sidenav #sidenav mode="side" opened [ngStyle]="{ width: '250px' }" class="pt-5 bg-main">
+
+    <mat-nav-list class="pt-5">
+      <mat-list-item
+        *ngFor="let item of sidebarItems"
+        [routerLink]="item.url"
+        class="mt-5 ps-5 align-items-center"
+      >
+      <div class="bg-light rounded-circle d-flex justify-content-center"
+        [ngStyle]="{ width: '40px', height: '40px' }"
+      >
+        <mat-icon matListItemIcon class="text-dark">{{ item.icon }}</mat-icon>
+      </div>
+      {{ item.label }}
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <!-- <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="spacer"></span>
+
+    <span>{{ user?.email }}</span>
+
+    <button mat-button (click)="onLogout()">
+      Logout
+    </button>
+
+  </mat-toolbar> -->
+
+  <div class="container p-2">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
