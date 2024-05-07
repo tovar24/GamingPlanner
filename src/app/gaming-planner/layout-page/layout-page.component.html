@@ -6,14 +6,16 @@
       <mat-list-item
         *ngFor="let item of sidebarItems"
         [routerLink]="item.url"
-        class="mt-5 ps-5 align-items-center"
+        class="mt-5 ps-5"
       >
-      <div class="bg-light rounded-circle d-flex justify-content-center"
-        [ngStyle]="{ width: '40px', height: '40px' }"
-      >
-        <mat-icon matListItemIcon class="text-dark">{{ item.icon }}</mat-icon>
+      <div class="d-flex align-items-center gap-3">
+        <div class="bg-light rounded-circle d-flex justify-content-center"
+          [ngStyle]="{ width: '40px', height: '40px' }"
+        >
+          <mat-icon matListItemIcon class="text-dark">{{ item.icon }}</mat-icon>
+        </div>
+        {{ item.label }}
       </div>
-      {{ item.label }}
       </mat-list-item>
     </mat-nav-list>
 
