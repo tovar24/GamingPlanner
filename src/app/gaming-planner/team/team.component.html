@@ -1,13 +1,13 @@
-<div>
+<div class="mt-4">
   <h1>Equipo - Nombre del equipo</h1>
 </div>
 
-<mat-card class="card-main rounded-4">
+<mat-card class="card-main rounded-4 mt-4">
 
   <div class="d-flex flex-column gap-2 align-items-center">
     <div class="text-light w-100 pt-5 ps-5 d-flex">
       <div class="pe-3 pt-3 fw-medium">STAFF</div>
-      <mat-form-field> <!-- TODO: Ponerle tamaño más pequeño al select -->
+      <mat-form-field class="custom-select">
         <mat-label>Select</mat-label>
         <mat-select [(value)]="selected">
           <mat-option></mat-option>
@@ -52,7 +52,7 @@
 
     <div class="text-light w-100 pt-5 ps-5 d-flex">
       <div class="pe-3 pt-3 fw-medium">ENTRENADOR</div>
-      <mat-form-field> <!-- TODO: Ponerle tamaño más pequeño al select -->
+      <mat-form-field class="custom-select">
         <mat-label>Select</mat-label>
         <mat-select [(value)]="selected">
           <mat-option></mat-option>
@@ -97,7 +97,7 @@
 
     <div class="text-light w-100 pt-5 ps-5 d-flex">
       <div class="pe-3 pt-3 fw-medium">JUGADORES</div>
-      <mat-form-field> <!-- TODO: Ponerle tamaño más pequeño al select -->
+      <mat-form-field class="custom-select">
         <mat-label>Select</mat-label>
         <mat-select [(value)]="selected">
           <mat-option></mat-option>

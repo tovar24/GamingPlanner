@@ -1,1 +1,434 @@
-<p>planner works!</p>
+<div class="d-flex align-items-center gap-5">
+  <h1>Planificador de Mes</h1>
+  <button mat-flat-button class="rounded-5" [ngStyle]="{
+      'height.px': '50',
+      'background-color': '#D9D9D9'
+    }">
+    Crear tablero
+  </button>
+</div>
+
+<div class="d-flex justify-content-between flex-wrap pt-2">
+
+  <mat-card class="card-week mb-3 text-light rounded-4">
+    <mat-card-header class="justify-content-center fs-3">Semana 1</mat-card-header>
+    <mat-card-content class="d-flex">
+      <mat-card-content class="d-flex flex-column gap-3">
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Lunes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Martes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Miércoles</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Jueves</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Viernes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+      </mat-card-content>
+      <mat-card-content class="card-act">
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>VOD</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>Teórico</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>PRACC</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card-week mb-3 text-light rounded-4">
+    <mat-card-header class="justify-content-center fs-3">Semana 2</mat-card-header>
+    <mat-card-content class="d-flex">
+
+      <mat-card-content class="d-flex flex-column gap-3">
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Lunes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Martes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Miércoles</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Jueves</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Viernes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content class="card-act">
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>VOD</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>Teórico</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>PRACC</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card-week text-light rounded-4">
+    <mat-card-header class="justify-content-center fs-3">Semana 3</mat-card-header>
+    <mat-card-content class="d-flex">
+
+      <mat-card-content class="d-flex flex-column gap-3">
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Lunes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Martes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Miércoles</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Jueves</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Viernes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content class="card-act">
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>VOD</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>Teórico</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>PRACC</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card-week text-light rounded-4">
+    <mat-card-header class="justify-content-center fs-3">Semana 4</mat-card-header>
+    <mat-card-content class="d-flex">
+
+      <mat-card-content class="d-flex flex-column gap-3">
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Lunes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Martes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Miércoles</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Jueves</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+
+        <div class="card-day">
+          <div class="d-flex justify-content-between rounded-4 pb-2">
+            <div class="text-dark">Viernes</div>
+            <div>
+              <button mat-icon-button color="warn" class="btn-card">
+                <mat-icon class="position-absolute top-0 start-0">delete</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="rounded-4 bg-info activity-bar"></div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content class="card-act">
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>VOD</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+
+        </mat-form-field>
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>Teórico</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field> <!-- TODO: Ponerle color a los select -->
+          <mat-label>PRACC</mat-label>
+          <mat-select [(value)]="selected">
+            <mat-option></mat-option>
+            <mat-option value="lunes">Lunes</mat-option>
+            <mat-option value="martes">Martes</mat-option>
+            <mat-option value="miercoles">Miércoles</mat-option>
+            <mat-option value="jueves">Jueves</mat-option>
+            <mat-option value="viernes">Viernes</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+
+    </mat-card-content>
+  </mat-card>
+</div>

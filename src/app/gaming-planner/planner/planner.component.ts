@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './planner.component.css'
 })
 export class PlannerComponent {
-
+  public selected: any;
 }
