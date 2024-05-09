@@ -1,18 +1,16 @@
-
-html {background-color: #2FA2AE;}
-
-
 .card-main {
   width: 1130px;
   height: 815px;
-  background-color: #CBAA62;
+  background-color: #000;
 }
 
 .card {
-  width: 315px;
-  height: 350px;
+  width: 1056px;
+  height: 92px;
+  background-color: #CBAA62;
 }
 
-.info-matches {
-  background-color: #2FA2AE;
+.btn-card {
+  width: 30px;
+  height: 30px;
 }
