@@ -1,1 +1,29 @@
-<p>profile works!</p>
+<div class="d-flex flex-column justify-content-center align-items-center mt-5">
+  <div class="position-relative"
+    [ngStyle]="{
+      'width.px': 170,
+      'height.px': 180
+    }"
+  >
+    <mat-icon
+    [ngStyle]="{
+      'width.px': 150,
+      'font-size': '150px',
+      'height.px': 150
+    }"
+    >
+    account_box
+    </mat-icon>
+    <button mat-icon-button class="position-absolute top-0 end-0">
+      <mat-icon>edit_square</mat-icon>
+    </button>
+  </div>
+  <div class="mt-5">Nombre</div>
+  <mat-form-field class="mt-3 w-25" appearance="outline">
+    <input matInput placeholder="Nombre">
+  </mat-form-field>
+  <div class="mt-5">Correo Electrónico</div>
+  <mat-form-field class="mt-3 w-25" appearance="outline">
+    <input matInput placeholder="Email">
+  </mat-form-field>
+</div>
