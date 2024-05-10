@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 27-04-2024 a las 19:58:00
+-- Tiempo de generación: 10-05-2024 a las 02:04:48
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -125,6 +125,13 @@ CREATE TABLE `planner` (
   `idDailyAct` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `planner`
+--
+
+INSERT INTO `planner` (`id`, `idMonth`, `idWeekDay`, `idDailyAct`) VALUES
+(1, 5, 3, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -177,16 +184,18 @@ INSERT INTO `team` (`id`, `name`, `idPlanner`) VALUES
 
 CREATE TABLE `tournament` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) NOT NULL,
+  `url` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tournament`
 --
 
-INSERT INTO `tournament` (`id`, `name`) VALUES
-(1, 'Circuito Tormenta'),
-(2, 'Liga Radiante');
+INSERT INTO `tournament` (`id`, `name`, `url`) VALUES
+(1, 'Circuito Tormenta', NULL),
+(2, 'Liga Radiante', NULL),
+(3, 'Clutch Series', 'https://circuitotormenta.com/landing/clutch-series');
 
 -- --------------------------------------------------------
 
@@ -221,7 +230,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `idRol`, `idTeam`) VALUES
 (1, 'ADMIN', 'admin1234@gmail.com', 'c93ccd78b2076528346216b3b2f701e6', 1, NULL),
-(2, 'pruebaAPI', 'prueba1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, NULL);
+(2, 'pruebaAPI', 'prueba1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, NULL),
+(5, 'prueba2', 'prueba2@gmail.com', '12345', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -430,7 +440,7 @@ ALTER TABLE `month`
 -- AUTO_INCREMENT de la tabla `planner`
 --
 ALTER TABLE `planner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -448,7 +458,7 @@ ALTER TABLE `team`
 -- AUTO_INCREMENT de la tabla `tournament`
 --
 ALTER TABLE `tournament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tournament_team`
@@ -460,13 +470,13 @@ ALTER TABLE `tournament_team`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `users_token`
 --
 ALTER TABLE `users_token`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `week`
