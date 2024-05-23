@@ -2,12 +2,14 @@
   width: 1130px;
   height: 815px;
   background-color: #000;
+  display: flex;
+  align-items: center;
 }
 
 .card {
   width: 1056px;
-  height: 92px;
-  background-color: #CBAA62;
+  height: 300px;
+  margin-top: 3%;
 }
 
 .btn-card {
@@ -17,4 +19,9 @@
 
 .custom-select {
   width: 120px;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
 }
