@@ -1,28 +1,23 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+
 .card-week {
-  width: 470px;
-  height: 420px;
+  width: 75%;
+  height: 350px;
   background-color: #CBAA62;
+  border-radius: 15px;
 }
 
-.card-day {
-  width: 267px;
-  height: 53px;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-.card-act {
-  width: 135px;
+.card-form {
+  width: 75%;
+  border-radius: 15px;
 }
 
-.btn-card {
-  width: 20px;
-  height: 20px;
-}
-
-.activity-bar {
-  width: 267px;
-  height: 20px;
-}
-
-mat-form-field {
-  width: 120px;
-}
