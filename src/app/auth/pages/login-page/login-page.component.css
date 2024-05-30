@@ -1,0 +1,40 @@
+section {
+  display: flex;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  height: auto;
+  width: auto;
+}
+
+.login input {
+  background-color: #2FA2AE;
+  border-radius: 15px;
+  width: 350px;
+  height: 40px;
+}
+
+::placeholder {
+  color: white;
+}
+
+.login button {
+  border-radius: 15px;
+  background-color: #2FA2AE;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #2FA2AE;
+  border-radius: 300px 0 0 200px;
+  width: 750px;
+}
+
+.register h2, p {
+  color: white;
+}

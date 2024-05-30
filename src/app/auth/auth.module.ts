@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AuthRoutingModule } from './auth-routing.module';
+import { MaterialModule } from '../angular-material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 // COMPONENTES
@@ -12,6 +13,7 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
   imports: [
     CommonModule,
     AuthRoutingModule,
+    MaterialModule,
     ReactiveFormsModule
   ],
   exports: [],
