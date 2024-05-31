@@ -2,34 +2,34 @@
 
   function register($conn, $data) {
     try {
-        // Generar el hash de la contraseña utilizando la función password_hash()
-        $passwdEncrypt = password_hash($data->password, PASSWORD_DEFAULT);
+      // Generar el hash de la contraseña utilizando la función password_hash()
+      $passwdEncrypt = password_hash($data->password, PASSWORD_DEFAULT);
 
-        // Preparar la consulta SQL para insertar un nuevo usuario
-        $sql = $conn->prepare("INSERT INTO users (name, email, password, idRol) VALUES (:name, :email, :password, :idRol);");
+      // Preparar la consulta SQL para insertar un nuevo usuario
+      $sql = $conn->prepare("INSERT INTO users (name, email, password, idRol) VALUES (:name, :email, :password, :idRol);");
 
-        // Enlazar los valores de los parámetros a la consulta preparada
-        $sql->bindValue(':name', $data->name);
-        $sql->bindValue(':email', $data->email);
-        $sql->bindValue(':password', $passwdEncrypt);
-        $sql->bindValue(':idRol', $data->idRol);
+      // Enlazar los valores de los parámetros a la consulta preparada
+      $sql->bindValue(':name', $data->name);
+      $sql->bindValue(':email', $data->email);
+      $sql->bindValue(':password', $passwdEncrypt);
+      $sql->bindValue(':idRol', $data->idRol);
 
-        // Ejecutar la consulta preparada
-        $sql->execute();
+      // Ejecutar la consulta preparada
+      $sql->execute();
 
-        // Obtener el ID del último registro insertado
-        $lastID = $conn->lastInsertId();
+      // Obtener el ID del último registro insertado
+      $lastID = $conn->lastInsertId();
 
-        // Crear un array con el ID del usuario recién registrado
-        $input['id'] = $lastID;
+      // Crear un array con el ID del usuario recién registrado
+      $input['id'] = $lastID;
 
-        // Establecer el modo de extracción de resultados a un array asociativo
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
+      // Establecer el modo de extracción de resultados a un array asociativo
+      $sql->setFetchMode(PDO::FETCH_ASSOC);
 
-        // Enviar una respuesta HTTP 200 OK y el JSON con el ID del usuario
-        header("HTTP/1.1 200 OK");
-        echo json_encode($input);
-        exit();
+      // Enviar una respuesta HTTP 200 OK y el JSON con el ID del usuario
+      header("HTTP/1.1 200 OK");
+      echo json_encode($input);
+      exit();
     } catch (PDOException $e) {
         // Manejar cualquier excepción PDO que pueda ocurrir
         http_response_code(500);
@@ -39,39 +39,35 @@
 
   function login($conn, $data) {
     try {
-        // Preparar la consulta SQL para buscar un usuario por email
-        $sql = $conn->prepare("SELECT id, password, idRol FROM users WHERE email = :email;");
-    
-        // Enlazar el valor del email a la consulta preparada
-        $sql->bindValue(':email', $data->email);
-    
-        // Ejecutar la consulta preparada
-        $sql->execute();
-        
-        // Establecer el modo de extracción de resultados a un array asociativo
-        $sql->setFetchMode(PDO::FETCH_ASSOC);
-        
-        // Obtener todos los resultados de la consulta
-        $result = $sql->fetchAll();
-        // Iterar sobre los resultados
-        foreach ($result as $value) {
-          // Verificar si el usuario existe y si la contraseña es válida
-            if ($value['id'] && password_verify($data->password, $value['password'])) {
-                // Enviar una respuesta HTTP 200 OK y el JSON con los datos del usuario
-                header("HTTP/1.1 200 OK");
-                echo json_encode($result);
-                exit();
-            } else {
-                // Enviar una respuesta HTTP 401 Unauthorized si las credenciales son inválidas
-                header("HTTP/1.1 401 Unauthorized");
-                exit();
-            }
+      // Preparar la consulta SQL para buscar un usuario por email
+      $sql = $conn->prepare("SELECT id as id, password, idRol FROM users WHERE email = :email;");
+
+      // Enlazar el valor del email a la consulta preparada
+      $sql->bindValue(':email', $data->email);
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Establecer el modo de extracción de resultados a un array asociativo
+      // y obtener los resultados de la consulta
+      while ($result = $sql->fetch(PDO::FETCH_ASSOC)) {
+        // Verificar si el usuario existe y si la contraseña es válida
+        if ($result['id'] && password_verify($data->password, $result['password'])) {
+          // Enviar una respuesta HTTP 200 OK y el JSON con los datos del usuario
+          http_response_code(200);
+          echo json_encode($result);
+          exit();
+        } else {
+          // Enviar una respuesta HTTP 401 Unauthorized si las credenciales son inválidas
+          http_response_code(401);
+          echo "Credenciales inválidas";
+          exit();
         }
-      
-        // Si no se encuentra ningún usuario, enviar una respuesta HTTP 404 Not Found
-        http_response_code(404);
-        echo "Usuario no encontrado";
-        exit();
+      }
+
+      // Si no se encuentra ningún usuario, enviar una respuesta HTTP 404 Not Found
+      http_response_code(404);
+      echo "Usuario no encontrado";
+      exit();
     } catch (PDOException $e) {
         // Manejar cualquier excepción PDO que pueda ocurrir
         http_response_code(500);

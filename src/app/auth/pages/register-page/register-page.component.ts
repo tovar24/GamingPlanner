@@ -21,7 +21,6 @@ export class RegisterPageComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-
     this.authService.checkEmail(this.registerForm.value);
   }
 
@@ -40,8 +39,8 @@ export class RegisterPageComponent implements OnInit {
   get password() {
     return this.registerForm.get('password')
   }
-  get rol() {
-    return this.registerForm.get('rol')
+  get idRol() {
+    return this.registerForm.get('idRol')
   }
 
   ngOnInit(): void {
@@ -49,7 +48,7 @@ export class RegisterPageComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      rol: ['', Validators.required]
+      idRol: ['', Validators.required]
     });
   }
 

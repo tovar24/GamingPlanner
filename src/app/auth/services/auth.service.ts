@@ -17,7 +17,7 @@ export class AuthService {
   ) { }
 
   get currentUser(): User|undefined {
-    if (!this.user) return undefined;
+    if (!this.user) {return undefined};
     return structuredClone(this.user);
   }
 
@@ -27,7 +27,7 @@ export class AuthService {
     this.http.post<User>(`${this.baseUrl}/api/rest/posts.php/login`, jsonData).subscribe(
       (response: any) => {
         const user: User = {
-          id: response[0].id,
+          id: response.id,
           name: response.name,
           email: data.email,
           idRol: response.idRol,
@@ -36,7 +36,7 @@ export class AuthService {
 
         // Almacenar el estado de inicio de sesión en el localStorage
         localStorage.setItem('User', JSON.stringify(user));
-        window.location.href = '';
+        this.router.navigate(['/']);
       }, (error: any) => {
         console.error('Error de al iniciar sesión', error);
       }
@@ -52,7 +52,7 @@ export class AuthService {
   // Registrar un nuevo usuario
   register(data: any) {
     const jsonData = JSON.stringify(data);
-    this.http.post<User>(`${this.baseUrl}/api/rest/post.php/register`, jsonData).subscribe(
+    this.http.post<User>(`${this.baseUrl}/api/rest/posts.php/register`, jsonData).subscribe(
       (response: any) => {
         // Redirige al usuario al login
         this.router.navigate(['auth/login']);
