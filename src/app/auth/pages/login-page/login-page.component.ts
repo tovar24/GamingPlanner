@@ -18,12 +18,6 @@ export class LoginPageComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
-    this.userForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-  }
 
   onSubmit() {
     if (this.userForm.invalid) {
@@ -34,11 +28,22 @@ export class LoginPageComponent implements OnInit {
     // this.router.navigate(['/']);
   }
 
+  onRegister() {
+    this.router.navigate(['auth/register']);
+  }
+
   get email() {
     return this.userForm.get('email');
   }
 
   get password() {
     return this.userForm.get('password');
+  }
+
+  ngOnInit(): void {
+    this.userForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
   }
 }

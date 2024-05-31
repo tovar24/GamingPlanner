@@ -1,14 +1,13 @@
-<section class="vh-100">
+<section>
   <div class="container login">
     <div class="row align-items-center">
-      <div class="col-12 col-xs-12 col-sm-6 col-lg-6 col-xl-6">
+      <div class="col">
         <form (ngSubmit)="onSubmit()" [formGroup]="userForm" novalidate class="row d-flex justify-content-center">
           <h2 class="col-12">Iniciar Sesión</h2>
           <div class="form-group col-12">
               <label for="email" *ngIf="false">Email:</label>
               <div class="wrap-input100 validate-input">
                 <input type="email" class="form-control input100" id="email" formControlName="email" required placeholder="Correo Electrónico">
-                <span class="focus-input100"></span>
               </div>
               <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
                 <div *ngIf="email?.hasError('required')">El email es requerido.</div>
@@ -19,7 +18,6 @@
               <label for="password" *ngIf="false">Contraseña:</label>
               <div class="wrap-input100 validate-input">
                 <input type="password" class="form-control input100 mt-3" id="password" formControlName="password" required placeholder="Contraseña">
-                <span class="focus-input100"></span>
               </div>
               <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
                 <div *ngIf="password?.hasError('required')">La contraseña es requerida.</div>
@@ -37,6 +35,6 @@
   <div class="register">
     <h2>¡Hola, Amigo!</h2>
     <p>Regístrate con tus datos para empezar a utilizar las funcionalidades del sitio</p>
-    <button>REGISTRARSE</button>
+    <button (click)="onRegister()">REGISTRARSE</button>
   </div>
 </section>

@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 // COMPONENTES
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { LayoutPageComponent } from './pages/layout-page/layout-page.component';
 
 
 @NgModule({
@@ -16,10 +17,11 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     MaterialModule,
     ReactiveFormsModule
   ],
-  exports: [],
   declarations: [
+    LayoutPageComponent,
     LoginPageComponent,
     RegisterPageComponent,
   ],
+  exports: [],
 })
 export class AuthModule { }
