@@ -3,6 +3,7 @@
   // Incluir los archivos de configuración y funciones necesarios
   include "config.php";
   include "utils.php";
+  include "gets.php";
   include "inserts.php";
   include "deletes.php";
   include "router.php";
@@ -25,6 +26,25 @@
   try {
     // Conectar a la base de datos
     $conn = connect($db);
+
+    // Obtener datos
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+      $a = 'hola';
+      switch ($a) {
+        case isset($_GET["id"]):
+          getUserById($conn);
+        break;
+        case isset($_GET["id"]):
+          getTeamById($conn);
+        break;
+      }
+      // $requestUri = $_SERVER['REQUEST_URI'];
+      // $jsonData = file_get_contents('php://input');
+      // $data = json_decode($jsonData); 
+      
+      // $_router = new Router($requestUri);
+      // $_router->handleGet($conn, $data);
+    }
 
     // Crear un nuevo post
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {

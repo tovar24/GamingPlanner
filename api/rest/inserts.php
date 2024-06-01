@@ -128,3 +128,98 @@
         echo "Error al verificar el email: " . $e->getMessage();
     }
   }
+
+  function insertActivities($conn, $data) {
+    try {
+      // Preparar la consulta SQL para insertar una nueva actividad
+      $sql = $conn->prepare("INSERT INTO activities (date, idTipeAct, idTeam) VALUES (:date, :idTipeAct, :idTeam);");
+
+      // Enlazar los valores de los parámetros a la consulta preparada
+      $sql->bindValue(':date', $data->date);
+      $sql->bindValue(':idTipeAct', $data->idTipeAct);
+      $sql->bindValue(':idTeam', $data->idTeam);
+
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Obtener el ID del último registro insertado
+      $lastID = $conn->lastInsertId();
+
+      // Crear un array con el ID de la actividad recién registrada
+      $input['id'] = $lastID;
+
+      // Establecer el modo de extracción de resultados a un array asociativo
+      $sql->fetch(PDO::FETCH_ASSOC);
+
+      // Enviar una respuesta HTTP 200 OK y el JSON con el ID de la actividad
+      header("HTTP/1.1 200 OK");
+      echo json_encode($input);
+      exit();
+    } catch (PDOException $e) {
+      http_response_code(400);
+      echo "Error al insertar la actividad " . $e->getMessage();
+    }
+  }
+
+  function insertGame($conn, $data) {
+    try {
+      // Preparar la consulta SQL para insertar un nuevo partido
+      $sql = $conn->prepare("INSERT INTO game (date, result, idTournament) VALUES (:date, :result, :idTournament);");
+
+      // Enlazar los valores de los parámetros a la consulta preparada
+      $sql->bindValue(':date', $data->date);
+      $sql->bindValue(':result', $data->result);
+      $sql->bindValue(':idTournament', $data->idTournament);
+
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Obtener el ID del último registro insertado
+      $lastID = $conn->lastInsertId();
+
+      // Crear un array con el ID del partido recién registrado
+      $input['id'] = $lastID;
+
+      // Establecer el modo de extracción de resultados a un array asociativo
+      $sql->fetch(PDO::FETCH_ASSOC);
+
+      // Enviar una respuesta HTTP 200 OK y el JSON con el ID del partido
+      header("HTTP/1.1 200 OK");
+      echo json_encode($input);
+      exit();
+    } catch (PDOException $e) {
+      http_response_code(400);
+      echo "Error al insertar el partido " . $e->getMessage();
+    }
+  }
+
+  function insertGameTeam($conn, $data) {
+    try {
+      // Preparar la consulta SQL para asociar los equipos al partido
+      $sql = $conn->prepare("INSERT INTO game_team (idGame, idTeam) VALUES (:idGame, :idTeam);");
+
+      // Enlazar los valores de los parámetros a la consulta preparada
+      $sql->bindValue(':idGame', $data->idGame);
+      $sql->bindValue(':idTeam', $data->idTeam);
+
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Obtener el ID del último registro insertado
+      $lastID = $conn->lastInsertId();
+
+      // Crear un array con el ID del partido recién registrado
+      $input['id'] = $lastID;
+
+      // Establecer el modo de extracción de resultados a un array asociativo
+      $sql->fetch(PDO::FETCH_ASSOC);
+
+      // Enviar una respuesta HTTP 200 OK y el JSON con el ID del partido
+      header("HTTP/1.1 200 OK");
+      echo json_encode($input);
+      exit();
+    } catch (PDOException $e) {
+      http_response_code(400);
+      echo "Error al insertar el partido " . $e->getMessage();
+    }
+  }

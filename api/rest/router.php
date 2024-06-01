@@ -9,6 +9,23 @@
       $this->requestUri = $requestUri;
     }
 
+    // Método para manejar solicitudes GET
+    public function handleGet($conn, $data) {
+      // Incluir archivo con las funciones de obtención de datos
+      require_once "gets.php";
+
+      // Verifica la solicitud URI y llama a la función correspondiente
+      if ($this->requestUri === '/api/rest/posts.php/getUserById') {
+        getUserById($conn);
+      } else if ($this->requestUri === '/api/rest/posts.php/getTeamById') {
+        getTeamById($conn);
+      } else if ($this->requestUri === '/api/rest/posts.php/getMembersTeam') {
+        getMembersTeam($conn, $data);
+      } else if ($this->requestUri === '/api/rest/posts.php/getActivitiesByIdTeam') {
+        getActivitiesByIdTeam($conn, $data);
+      }
+    }
+
     // Método para manejar solicitudes POST
     public function handlePost($conn, $data) {
       // Incluir archivo con las funciones de inserción
@@ -21,6 +38,12 @@
         login($conn, $data);
       } else if ($this->requestUri === '/api/rest/posts.php/checkEmail') {
         checkEmail($conn, $data);
+      } else if ($this->requestUri === '/api/rest/posts.php/insertActivities') {
+        insertActivities($conn, $data);
+      } else if ($this->requestUri === '/api/rest/posts.php/insertGame') {
+        insertGame($conn, $data);
+      } else if ($this->requestUri === '/api/rest/posts.php/insertGameTeam') {
+        insertGameTeam($conn, $data);
       }
     }
 

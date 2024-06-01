@@ -17,8 +17,13 @@ export class AuthService {
   ) { }
 
   get currentUser(): User|undefined {
-    if (!this.user) {return undefined};
-    return structuredClone(this.user);
+    const userJson = localStorage.getItem('User');
+
+    if (userJson) {
+      // Parsear el objeto User desde el JSON
+      this.user = JSON.parse(userJson);
+    }
+    return this.user;
   }
 
   // Iniciar sesión
@@ -36,7 +41,7 @@ export class AuthService {
 
         // Almacenar el estado de inicio de sesión en el localStorage
         localStorage.setItem('User', JSON.stringify(user));
-        this.router.navigate(['/']);
+        this.router.navigate(['/gaming-planner']);
       }, (error: any) => {
         console.error('Error de al iniciar sesión', error);
       }
