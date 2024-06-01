@@ -14,7 +14,7 @@ Instalar node.js 20.11.1.
 
 Instalar AngularCLI 17.2.2.
 
-Abrir la terminal de Visual Studio Code y ejecutar el comando`npm install`.
+Abrir la terminal de Visual Studio Code y ejecutar el comando `npm install`.
 
 Copiar la carpeta `api` en la carpeta htdocs de XAMPP.
 
