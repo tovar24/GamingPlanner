@@ -29,10 +29,15 @@ form {
   background-color: #2FA2AE;
 }
 
+.btnLogin {
+  width: 300px;
+}
+
 .login {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-color: #2FA2AE;
   border-radius: 0 300px 200px 0;
   width: 750px;

@@ -1,40 +1,36 @@
 <section>
-  <div class="container login">
-    <div class="row align-items-center">
-      <div class="col">
-        <form (ngSubmit)="onSubmit()" [formGroup]="userForm" novalidate class="row d-flex justify-content-center">
-          <h2 class="col-12">Iniciar Sesión</h2>
-          <div class="form-group col-12">
-              <label for="email" *ngIf="false">Email:</label>
-              <div class="wrap-input100 validate-input">
-                <input type="email" class="form-control input100" id="email" formControlName="email" required placeholder="Correo Electrónico">
-              </div>
-              <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
-                <div *ngIf="email?.hasError('required')">El email es requerido.</div>
-                <div *ngIf="email?.errors?.['email']">El email debe tener un formato válido.</div>
-              </div>
-          </div>
-          <div class="form-group col-12">
-              <label for="password" *ngIf="false">Contraseña:</label>
-              <div class="wrap-input100 validate-input">
-                <input type="password" class="form-control input100 mt-3" id="password" formControlName="password" required placeholder="Contraseña">
-              </div>
-              <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
-                <div *ngIf="password?.hasError('required')">La contraseña es requerida.</div>
-                <div *ngIf="password?.errors?.['invalidPassword']">La contraseña debe contener al menos una letra mayúscula,
-                una letra minúscula y un número.</div>
-              </div>
-          </div>
-          <button mat-fab [disabled]="userForm.invalid" type="submit">
-            <mat-icon>east</mat-icon>
-          </button>
-        </form>
-      </div>
+  <div class="login">
+    <div class="col">
+      <form (ngSubmit)="onSubmit()" [formGroup]="userForm" novalidate>
+        <h2>Iniciar Sesión</h2>
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" id="email" formControlName="email" required>
+            <mat-error *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+              <div *ngIf="email?.hasError('required')">El email es requerido.</div>
+              <div *ngIf="email?.errors?.['email']">El email debe tener un formato válido.</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" id="password" formControlName="password" required>
+            <mat-error *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+              <div *ngIf="password?.hasError('required')">La contraseña es requerida.</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <button mat-fab [disabled]="userForm.invalid" type="submit">
+          <mat-icon>east</mat-icon>
+        </button>
+      </form>
     </div>
   </div>
   <div class="register">
     <h2>¡Hola, Amigo!</h2>
     <p>Regístrate con tus datos para empezar a utilizar las funcionalidades del sitio</p>
-    <button (click)="onRegister()">REGISTRARSE</button>
+    <button mat-flat-button class="btnRegister" (click)="onRegister()">REGISTRARSE</button>
   </div>
 </section>
