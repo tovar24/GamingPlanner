@@ -48,21 +48,18 @@
   </mat-card>
 
   <mat-card class="card-form">
-    <form [formGroup]="plannerForm">
+    <form [formGroup]="plannerForm" (ngSubmit)="addActivity()">
       <mat-form-field>
-        <mat-label>Día</mat-label>
-        <mat-select formControlName="day">
-          <mat-option [value]="item" *ngFor="let item of daysList">
-            {{item}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="plannerForm.get('day')">
-          El día es obligatorio
+        <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Fecha">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="plannerForm.get('date')">
+          La fecha es obligatoria.
         </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Rol</mat-label>
+        <mat-label>Actividad</mat-label>
         <mat-select formControlName="activity" multiple>
           <mat-option [value]="item" *ngFor="let item of activityList">
             {{item}}
@@ -73,7 +70,7 @@
         </mat-error>
       </mat-form-field>
 
-      <button mat-raised-button color="primary" (click)="addActivity()">
+      <button mat-raised-button color="primary" type="submit">
         Añadir
       </button>
     </form>

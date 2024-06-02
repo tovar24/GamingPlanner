@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { GamingPlannerRoutingModule } from './gaming-planner-routing.module';
 import { MaterialModule } from '../angular-material/material.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 // COMPONENTES
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -29,5 +30,8 @@ import { LayoutPageComponent } from './layout-page/layout-page.component';
     ProfileComponent,
     LayoutPageComponent
   ],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
+  ]
 })
 export class GamingPlannerModule { }
