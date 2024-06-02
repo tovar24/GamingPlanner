@@ -21,8 +21,8 @@
         getUserById($conn);
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getMembersTeam') !== false) {
         getMembersTeam($conn);
-      } else if (strpos($this->requestUri, '/api/rest/posts.php/getActivitiesByIdTeam') !== false) {
-        getActivitiesByIdTeam($conn);
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getActivitiesById') !== false) {
+        getActivitiesById($conn);
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getTeamById') !== false) {
         getTeamById($conn);
       }

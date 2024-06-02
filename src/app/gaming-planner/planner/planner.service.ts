@@ -12,4 +12,8 @@ export class PlannerService {
     const jsonData = JSON.stringify(data);
     return this.http.post(`${this.baseUrl}/insertActivities`, jsonData);
   }
+
+  getActivitiesById(idTeam: any): Observable<any> {
+    return this.http.get(`${ this.baseUrl }/getActivitiesById?idTeam=` + idTeam);
+  }
 }

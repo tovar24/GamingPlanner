@@ -149,15 +149,25 @@
       $lastID = $conn->lastInsertId();
 
       // Crear un array con el ID de la actividad recién registrada
-      $input['id'] = $lastID;
+      // $input['id'] = $lastID;
 
-      // Establecer el modo de extracción de resultados a un array asociativo
-      $sql->fetch(PDO::FETCH_ASSOC);
+      // Preparar la consulta SQL para obtener los datos de la actividad
+      $sql = $conn->prepare("SELECT * FROM activities WHERE id = :id;");
+
+      // Enlazar los valores de los parámetros a la consulta preparada
+      $sql->bindValue(':id', $lastID);
+
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Obtener los datos de la actividad
+      $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
 
       // Enviar una respuesta HTTP 200 OK y el JSON con el ID de la actividad
       header('Content-Type: application/json');
       http_response_code(200);
-      echo json_encode($input);
+      echo json_encode($result);
       exit();
     } catch (PDOException $e) {
       http_response_code(400);

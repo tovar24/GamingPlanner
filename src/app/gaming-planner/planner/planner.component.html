@@ -60,12 +60,15 @@
 
       <mat-form-field>
         <mat-label>Actividad</mat-label>
-        <mat-select formControlName="activity" multiple>
-          <mat-option [value]="item" *ngFor="let item of activityList">
+        <mat-select formControlName="idTipeAct" multiple>
+          <!-- <mat-option [value]="item" *ngFor="let item of activityList">
             {{item}}
-          </mat-option>
+          </mat-option> -->
+          <mat-option value="1">VOD</mat-option>
+          <mat-option value="2">Teórico</mat-option>
+          <mat-option value="3">PRACC</mat-option>
         </mat-select>
-        <mat-error *ngIf="plannerForm.get('activity')">
+        <mat-error *ngIf="plannerForm.get('idTipeAct')">
           La actividad es obligatoria
         </mat-error>
       </mat-form-field>
