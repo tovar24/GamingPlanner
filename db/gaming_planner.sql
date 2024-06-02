@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 28-05-2024 a las 16:29:31
+-- Tiempo de generación: 02-06-2024 a las 23:28:03
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -34,6 +34,29 @@ CREATE TABLE `activities` (
   `idTeam` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `activities`
+--
+
+INSERT INTO `activities` (`id`, `date`, `idTipeAct`, `idTeam`) VALUES
+(1, '2024-06-03', 1, 1),
+(6, '2024-06-03', 2, 1),
+(7, '2024-06-03', 1, 3),
+(8, '2024-06-04', 2, 3),
+(9, '2024-06-05', 3, 3),
+(10, '2024-06-05', 2, 3),
+(11, '2024-06-05', 1, 3),
+(12, '2024-07-02', 1, 3),
+(13, '2024-06-05', 3, 1),
+(14, '2024-06-05', 1, 2),
+(15, '2024-06-05', 2, 2),
+(16, '2024-07-05', 2, 1),
+(17, '2024-07-03', 2, 3),
+(18, '2024-06-02', 3, 3),
+(19, '2024-06-02', 1, 3),
+(20, '2024-06-02', 2, 3),
+(21, '2024-06-04', 1, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +70,13 @@ CREATE TABLE `game` (
   `idTournament` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `game`
+--
+
+INSERT INTO `game` (`id`, `date`, `result`, `idTournament`) VALUES
+(1, '2024-06-01', '13-10', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -58,6 +88,14 @@ CREATE TABLE `game_team` (
   `idGame` int(11) NOT NULL,
   `idTeam` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `game_team`
+--
+
+INSERT INTO `game_team` (`id`, `idGame`, `idTeam`) VALUES
+(1, 1, 1),
+(2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -166,7 +204,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `idRol` int(11) NOT NULL,
   `idTeam` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -176,9 +214,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `idRol`, `idTeam`) VALUES
-(1, 'ADMIN', 'admin1234@gmail.com', 'c93ccd78b2076528346216b3b2f701e6', 1, NULL),
-(2, 'pruebaAPI', 'prueba1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, NULL),
-(5, 'prueba2', 'prueba2@gmail.com', '12345', 3, NULL);
+(1, 'ADMIN', 'admin1234@gmail.com', 'c93ccd78b2076528346216b3b2f701e6', 1, 1),
+(2, 'pruebaAPI', 'prueba1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, 1),
+(5, 'prueba2', 'prueba2@gmail.com', '12345', 3, 1),
+(7, 'Camilo', 'camilo@gmail.com', '$2y$10$vM8x4NOk/nUsIn7M8F6CQODuFCNojlCaAZMjvxZC4Xo2QCC2.tbW2', 3, 3),
+(8, 'Cristian', 'cristian@gmail.com', '$2y$10$z7LxjmUNjGn80888/ZeyueBBwBRcOv.KvmCJbYGcbRrwjkfXpSIgq', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -217,13 +257,16 @@ ALTER TABLE `activities`
 -- Indices de la tabla `game`
 --
 ALTER TABLE `game`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_tournamentID_1` (`idTournament`);
 
 --
 -- Indices de la tabla `game_team`
 --
 ALTER TABLE `game_team`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_IdGame_1` (`idGame`),
+  ADD KEY `fk_IdTeam_2` (`idTeam`);
 
 --
 -- Indices de la tabla `rol`
@@ -281,19 +324,19 @@ ALTER TABLE `users_token`
 -- AUTO_INCREMENT de la tabla `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `game_team`
 --
 ALTER TABLE `game_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -329,7 +372,7 @@ ALTER TABLE `tournament_team`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `users_token`
@@ -347,6 +390,19 @@ ALTER TABLE `users_token`
 ALTER TABLE `activities`
   ADD CONSTRAINT `fk_teamID_2` FOREIGN KEY (`idTeam`) REFERENCES `team` (`id`),
   ADD CONSTRAINT `fk_tipeAct_1` FOREIGN KEY (`idTipeAct`) REFERENCES `tipe_activity` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `game`
+--
+ALTER TABLE `game`
+  ADD CONSTRAINT `fk_tournamentID_1` FOREIGN KEY (`idTournament`) REFERENCES `tournament` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `game_team`
+--
+ALTER TABLE `game_team`
+  ADD CONSTRAINT `fk_IdGame_1` FOREIGN KEY (`idGame`) REFERENCES `game` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_IdTeam_2` FOREIGN KEY (`idTeam`) REFERENCES `team` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tournament`
