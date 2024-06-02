@@ -8,6 +8,10 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
+  getAllRol(): Observable<any> {
+    return this.http.get(`${ this.baseUrl }/getAllRol`);
+  }
+
   getTeamById(id: any): Observable<any> {
     return this.http.get(`${ this.baseUrl }/getTeamById?id=` + id);
   }

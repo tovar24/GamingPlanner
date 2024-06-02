@@ -29,7 +29,9 @@ export class TeamComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['name', 'email', 'rol', 'delete'];
   dataSource = new MatTableDataSource();
 
+  public rol: any = [];
   public team: any = [];
+  public teamName: any;
   myForm: FormGroup;
 
   constructor(
@@ -49,10 +51,23 @@ export class TeamComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  getRoles() {
+    this.teamService.getAllRol().subscribe(
+      (response: any) => {
+        this.rol = response;
+      }
+    );
+  }
+
   getTeamById(id: any) {
     this.teamService.getTeamById(id).subscribe(
       (response: any) => {
         this.team = response;
+        this.team.map(
+          (item: any) => {
+            this.teamName = item.name;
+          }
+        );
       }
     );
   }
@@ -77,5 +92,6 @@ export class TeamComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getTeamById(this.authService.currentUser?.idTeam);
     this.getMembersTeam(this.authService.currentUser?.idTeam);
+    // this.getRoles();
   }
 }
