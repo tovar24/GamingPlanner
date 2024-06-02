@@ -27,7 +27,8 @@
       $sql->setFetchMode(PDO::FETCH_ASSOC);
 
       // Enviar una respuesta HTTP 200 OK y el JSON con el ID del usuario
-      header("HTTP/1.1 200 OK");
+      header('Content-Type: application/json');
+      http_response_code(200);
       echo json_encode($input);
       exit();
     } catch (PDOException $e) {
@@ -53,6 +54,7 @@
         // Verificar si el usuario existe y si la contraseña es válida
         if ($result['id'] && password_verify($data->password, $result['password'])) {
           // Enviar una respuesta HTTP 200 OK y el JSON con los datos del usuario
+          header('Content-Type: application/json');
           http_response_code(200);
           echo json_encode($result);
           exit();
@@ -119,7 +121,8 @@
         $result = $sql->fetchAll();
 
         // Enviar una respuesta HTTP 200 OK y el JSON con el resultado
-        header("HTTP/1.1 200 OK");
+        header('Content-Type: application/json');
+        http_response_code(200);
         echo json_encode($result);
         exit();
     } catch (PDOException $e) {
@@ -152,7 +155,8 @@
       $sql->fetch(PDO::FETCH_ASSOC);
 
       // Enviar una respuesta HTTP 200 OK y el JSON con el ID de la actividad
-      header("HTTP/1.1 200 OK");
+      header('Content-Type: application/json');
+      http_response_code(200);
       echo json_encode($input);
       exit();
     } catch (PDOException $e) {
@@ -184,7 +188,8 @@
       $sql->fetch(PDO::FETCH_ASSOC);
 
       // Enviar una respuesta HTTP 200 OK y el JSON con el ID del partido
-      header("HTTP/1.1 200 OK");
+      header('Content-Type: application/json');
+      http_response_code(200);
       echo json_encode($input);
       exit();
     } catch (PDOException $e) {
@@ -215,7 +220,8 @@
       $sql->fetch(PDO::FETCH_ASSOC);
 
       // Enviar una respuesta HTTP 200 OK y el JSON con el ID del partido
-      header("HTTP/1.1 200 OK");
+      header('Content-Type: application/json');
+      http_response_code(200);
       echo json_encode($input);
       exit();
     } catch (PDOException $e) {

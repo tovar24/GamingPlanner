@@ -15,14 +15,16 @@
       require_once "gets.php";
 
       // Verifica la solicitud URI y llama a la función correspondiente
-      if (strpos($this->requestUri, '/api/rest/posts.php/getUserById') !== false) {
+      if (strpos($this->requestUri, '/api/rest/posts.php/getAllRoles') !== false) {
+        getAllRoles($conn);
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getUserById') !== false) {
         getUserById($conn);
-      } else if (strpos($this->requestUri, '/api/rest/posts.php/getTeamById') !== false) {
-        getTeamById($conn);
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getMembersTeam') !== false) {
         getMembersTeam($conn);
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getActivitiesByIdTeam') !== false) {
         getActivitiesByIdTeam($conn);
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getTeamById') !== false) {
+        getTeamById($conn);
       }
     }
 
