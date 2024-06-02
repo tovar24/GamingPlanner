@@ -52,40 +52,30 @@
   </div>
 
   <div class="card">
-    <form [formGroup]="myForm">
+    <form [formGroup]="formTeam" (ngSubmit)="addMember()">
+      <mat-form-field>
+        <mat-label>Equipo</mat-label>
+        <mat-select formControlName="idTeam" required>
+          <mat-option value="1">CROW DYNASTY</mat-option>
+          <mat-option value="2">FUSYON</mat-option>
+          <mat-option value="3">KRÜ</mat-option>
+          <mat-option value="4">SENTINELS</mat-option>
+        </mat-select>
+        <mat-error *ngIf="formTeam.get('idTeam')">
+          El equipo es obligatorio
+        </mat-error>
+      </mat-form-field>
+
       <mat-form-field>
         <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre">
-        <mat-error *ngIf="myForm.get('nombre')">
+        <input matInput formControlName="name">
+        <mat-error *ngIf="formTeam.get('name')">
           El nombre es obligatorio
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email">
-        <mat-error *ngIf="myForm.get('email')">
-          El email es obligatorio
-        </mat-error>
-        <mat-error *ngIf="myForm.get('email')">
-          El email no es válido
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Rol</mat-label>
-        <mat-select formControlName="rol">
-          <mat-option *ngFor="let item" [value]="item">
-            {{ item.rol }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="myForm.get('rol')">
-          El rol es obligatorio
-        </mat-error>
-      </mat-form-field>
-
       <button mat-raised-button color="primary" type="submit">
-        Enviar
+        Añadir
       </button>
     </form>
   </div>

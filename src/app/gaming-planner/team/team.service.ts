@@ -20,4 +20,9 @@ export class TeamService {
     return this.http.get(`${ this.baseUrl }/getMembersTeam?idTeam=` + idTeam);
   }
 
+  updateTeam(data: any): Observable<any> {
+    const jsonData = JSON.stringify(data);
+    return this.http.put(`${ this.baseUrl }/updateTeam`, jsonData);
+  }
+
 }

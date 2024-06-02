@@ -32,17 +32,16 @@ export class TeamComponent implements OnInit, AfterViewInit {
   public rol: any = [];
   public team: any = [];
   public teamName: any;
-  myForm: FormGroup;
+  public formTeam: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private teamService: TeamService,
     private authService: AuthService
   ) {
-    this.myForm = this.fb.group({
-      nombre: ['', Validators.required],
-      email : ['', [Validators.required, Validators.email]],
-      rol   : ['', Validators.required]
+    this.formTeam = this.fb.group({
+      idTeam: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
@@ -81,8 +80,47 @@ export class TeamComponent implements OnInit, AfterViewInit {
     );
   }
 
-  deleteMember(member: any) {
-    // this.dataSource = this.dataSource.filter((item: any) => item !== member);
+  deleteMember(item: any) {
+    const data = {
+      idTeam: item.idTeam = null,
+      name: item.name
+    };
+
+    this.teamService.updateTeam(data).subscribe(
+      (response: any) => {
+        this.getMembersTeam(this.authService.currentUser?.idTeam);
+      }
+    );
+  }
+
+  addMember() {
+    const data = this.formTeam.value;
+
+    if (this.formTeam.invalid) {
+      return;
+    }
+
+    this.teamService.updateTeam(data).subscribe(
+      (response: any) => {
+        if (response.idTeam === this.authService.currentUser?.idTeam) {
+          this.members.push(response);
+          this.getMembersTeam(this.authService.currentUser?.idTeam);
+        } else {
+          this.getMembersTeam(this.authService.currentUser?.idTeam);
+        }
+      },
+      (error: any) => {
+        console.error('Error:', error);
+      }
+    );
+  }
+
+  get idTeam() {
+    return this.formTeam.get('idTeam')
+  }
+
+  get name() {
+    return this.formTeam.get('name')
   }
 
   ngAfterViewInit(): void {
@@ -92,6 +130,5 @@ export class TeamComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getTeamById(this.authService.currentUser?.idTeam);
     this.getMembersTeam(this.authService.currentUser?.idTeam);
-    this.getRoles();
   }
 }
