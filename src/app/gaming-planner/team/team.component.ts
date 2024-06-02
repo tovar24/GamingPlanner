@@ -11,12 +11,6 @@ export interface membersTeam {
   rol: string;
 }
 
-// const dataTable: membersTeam[] = [
-//   {name: 'ADMIN', email: 'admin1234@gmail.com', rol: 1},
-//   {name: 'pruebaAPI', email: 'prueba1@gmail.com', rol: 1},
-//   {name: 'prueba2', email: 'prueba2@gmail.com', rol: 1}
-// ]
-
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
@@ -32,7 +26,7 @@ export class TeamComponent implements OnInit, AfterViewInit {
   public rol: any = [];
   public team: any = [];
   public teamName: any;
-  public formTeam: FormGroup;
+  public formTeam!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
