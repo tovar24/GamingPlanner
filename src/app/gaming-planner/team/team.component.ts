@@ -92,6 +92,6 @@ export class TeamComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getTeamById(this.authService.currentUser?.idTeam);
     this.getMembersTeam(this.authService.currentUser?.idTeam);
-    // this.getRoles();
+    this.getRoles();
   }
 }
