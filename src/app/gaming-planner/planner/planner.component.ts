@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PlannerService } from './planner.service';
 import { AuthService } from '../../auth/services/auth.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-planner',
@@ -10,8 +11,8 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class PlannerComponent {
   displayedColumns: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  dataSource = new MatTableDataSource();
   plannerForm: FormGroup;
-  daysList: string[] = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes'];
   activitiesList: any = [];
   data: any = [];
 
@@ -41,6 +42,7 @@ export class PlannerComponent {
         this.plannerService.getActivitiesById(response[0].idTeam).subscribe(
           (resp: any) => {
             this.activitiesList = resp;
+            this.dataSource.data = this.activitiesList;
           }
         );
       }
