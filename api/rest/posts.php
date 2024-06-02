@@ -3,8 +3,9 @@
   // Incluir los archivos de configuración y funciones necesarios
   include "config.php";
   include "utils.php";
-  include "gets.php";
   include "inserts.php";
+  include "gets.php";
+  include "puts.php";
   include "deletes.php";
   include "router.php";
 
@@ -29,21 +30,12 @@
 
     // Obtener datos
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-      $a = 'hola';
-      switch ($a) {
-        case isset($_GET["id"]):
-          getUserById($conn);
-        break;
-        case isset($_GET["id"]):
-          getTeamById($conn);
-        break;
-      }
-      // $requestUri = $_SERVER['REQUEST_URI'];
+      $requestUri = $_SERVER['REQUEST_URI'];
       // $jsonData = file_get_contents('php://input');
       // $data = json_decode($jsonData); 
       
-      // $_router = new Router($requestUri);
-      // $_router->handleGet($conn, $data);
+      $_router = new Router($requestUri);
+      $_router->handleGet($conn);
     }
 
     // Crear un nuevo post
@@ -54,6 +46,16 @@
       
       $_router = new Router($requestUri);
       $_router->handlePost($conn, $data);
+    }
+
+    // Actualizar
+    if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
+      $requestUri = $_SERVER['REQUEST_URI'];
+      $jsonData = file_get_contents('php://input');
+      $data = json_decode($jsonData); 
+      
+      $_router = new Router($requestUri);
+      $_router->handlePut($conn, $data);
     }
 
     // Borrar

@@ -10,19 +10,19 @@
     }
 
     // Método para manejar solicitudes GET
-    public function handleGet($conn, $data) {
+    public function handleGet($conn) {
       // Incluir archivo con las funciones de obtención de datos
       require_once "gets.php";
 
       // Verifica la solicitud URI y llama a la función correspondiente
-      if ($this->requestUri === '/api/rest/posts.php/getUserById') {
+      if (strpos($this->requestUri, '/api/rest/posts.php/getUserById') !== false) {
         getUserById($conn);
-      } else if ($this->requestUri === '/api/rest/posts.php/getTeamById') {
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getTeamById') !== false) {
         getTeamById($conn);
-      } else if ($this->requestUri === '/api/rest/posts.php/getMembersTeam') {
-        getMembersTeam($conn, $data);
-      } else if ($this->requestUri === '/api/rest/posts.php/getActivitiesByIdTeam') {
-        getActivitiesByIdTeam($conn, $data);
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getMembersTeam') !== false) {
+        getMembersTeam($conn);
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getActivitiesByIdTeam') !== false) {
+        getActivitiesByIdTeam($conn);
       }
     }
 
@@ -44,6 +44,16 @@
         insertGame($conn, $data);
       } else if ($this->requestUri === '/api/rest/posts.php/insertGameTeam') {
         insertGameTeam($conn, $data);
+      }
+    }
+
+    public function handlePut($conn, $data) {
+      // Incluir archivo con las funciones de actualización
+      require_once "puts.php";
+
+      // Verifica la solicitud URI y llama a la función correspondiente
+      if ($this->requestUri === '/api/rest/posts.php/updateTeam') {
+        updateTeam($conn, $data);
       }
     }
 

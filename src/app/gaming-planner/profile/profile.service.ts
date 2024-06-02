@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { AuthService } from '../../auth/services/auth.service';
 import { User } from '../../auth/interfaces/user.interface';
 import { Observable } from 'rxjs';
 
@@ -11,12 +10,10 @@ export class ProfileService {
   private user?: User;
 
   constructor(
-    private http: HttpClient,
-    private authService: AuthService
+    private http: HttpClient
   ) { }
 
   getUserById(id: any): Observable<any> {
-
     return this.http.get(`${ this.baseUrl }/getUserById?id=` + id);
   }
 }

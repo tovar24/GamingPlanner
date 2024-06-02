@@ -25,7 +25,6 @@ export class LoginPageComponent implements OnInit {
     }
 
     this.authService.login(this.userForm.value);
-    // this.router.navigate(['/']);
   }
 
   onRegister() {

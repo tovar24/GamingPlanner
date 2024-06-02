@@ -28,4 +28,13 @@
     return $stmt;
   }
 
+   //Obtener parametros para updates
+  function getParams($input) {
+    $filterParams = [];
+    foreach($input as $param => $value) {
+      $filterParams[] = "$param=:$param";
+    }
+    return implode(", ", $filterParams);
+	}
+
 ?>

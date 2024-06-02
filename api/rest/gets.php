@@ -54,13 +54,13 @@
     }
   }
 
-  function getMembersTeam($conn, $data) {
+  function getMembersTeam($conn) {
     try {
       // Preparar la consulta SQL para buscar el equipo por medio del id
-      $sql = $conn->prepare("SELECT * FROM users WHERE idTeam = :idTeam");
+      $sql = $conn->prepare("SELECT u.name, u.email, r.rol FROM users u INNER JOIN rol r ON r.id = u.idRol WHERE idTeam = :idTeam");
 
       // Enlazar el valor del idTeam a la consulta preparada
-      $sql->bindValue(':idTeam', $data->idTeam);
+      $sql->bindValue(':idTeam', $_GET['idTeam']);
   
       // Ejecutar la consulta preparada
       $sql->execute();
@@ -81,13 +81,13 @@
     }
   }
 
-  function getActivitiesByIdTeam($conn, $data) {
+  function getActivitiesByIdTeam($conn) {
     try {
       // Preparar la consulta SQL para buscar las actividades por medio del idTeam
       $sql = $conn->prepare("SELECT * FROM activities WHERE idTeam = :idTeam");
 
       // Enlazar el valor del idTeam a la consulta preparada
-      $sql->bindValue(':idTeam', $data->idTeam);
+      $sql->bindValue(':idTeam', $_GET['idTeam']);
   
       // Ejecutar la consulta preparada
       $sql->execute();

@@ -1,0 +1,36 @@
+<?php
+
+  function updateTeam($conn, $data) {
+    try {
+      // Preparar la consulta SQL para actualizar el idTeam de un usuario
+      $sql = $conn->prepare("UPDATE users SET idTeam = :idTeam WHERE name LIKE :name");
+
+      // Enlazar los valores de los parámetros a la consulta preparada
+      $sql->bindValue(':idTeam', $data->idTeam);
+      $sql->bindValue(':name', $data->name);
+
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Obtener el ID del último registro modificado
+      $updatedId = $conn->lastInsertId();
+
+      print_r($updatedId);
+
+      // Preparar una nueva consulta para obtener el registro actualizado
+      $sql = $conn->prepare("SELECT name, idTeam FROM users WHERE id = :id");
+      $sql->bindValue(':id', $updatedId);
+      $sql->execute();
+
+      // Establecer el modo de extracción de resultados a un array asociativo
+      // y obtener los resultados de la consulta
+      $result = $sql->fetch(PDO::FETCH_ASSOC);
+
+      // Enviar una respuesta HTTP 200 OK y el JSON con el resultado
+      http_response_code(200);
+      echo json_encode($result);
+      exit();
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }

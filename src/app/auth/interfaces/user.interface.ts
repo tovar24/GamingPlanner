@@ -3,5 +3,5 @@ export interface User {
   name:     string;
   email:    string;
   idRol:    number;
-  idTeam:   null;
+  idTeam:   number|null;
 }

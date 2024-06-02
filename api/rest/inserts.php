@@ -40,7 +40,7 @@
   function login($conn, $data) {
     try {
       // Preparar la consulta SQL para buscar un usuario por email
-      $sql = $conn->prepare("SELECT id as id, password, idRol FROM users WHERE email = :email;");
+      $sql = $conn->prepare("SELECT id as id, password, idRol, idTeam FROM users WHERE email = :email;");
 
       // Enlazar el valor del email a la consulta preparada
       $sql->bindValue(':email', $data->email);
