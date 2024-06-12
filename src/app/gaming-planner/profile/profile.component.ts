@@ -10,6 +10,9 @@ import { User } from '../../auth/interfaces/user.interface';
 })
 export class ProfileComponent implements OnInit {
   public user?: User;
+  public userName: any;
+  public userEmail: any;
+  private currentUserId = this.authService.currentUser?.id;
 
   constructor(
     private profileService: ProfileService,
@@ -19,13 +22,16 @@ export class ProfileComponent implements OnInit {
   getUser(id: any) {
     this.profileService.getUserById(id).subscribe(
       (response: any) => {
-        this.user = response;
+        this.user = response.map((item: any) => {
+          this.userName = item.name;
+          this.userEmail = item.email;
+        });
       }
     );
   }
 
   ngOnInit(): void {
-    this.getUser(this.authService.currentUser?.id);
+    this.getUser(this.currentUserId);
   }
 
 }
