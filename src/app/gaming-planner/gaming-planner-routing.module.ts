@@ -19,7 +19,7 @@ const routes: Routes = [
       { path: 'tournament', component: TournamentComponent },
       { path: 'team', component: TeamComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: '**', redirectTo: 'dashboard' },
+      { path: '**', redirectTo: 'planner' },
     ]
   }
 ]

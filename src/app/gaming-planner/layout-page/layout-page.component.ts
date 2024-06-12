@@ -11,7 +11,7 @@ import { User } from '../../auth/interfaces/user.interface';
 export class LayoutPageComponent {
 
   public sidebarItems = [
-    { label: 'Dashboard', icon: 'dashboard', url: './dashboard' },
+    // { label: 'Dashboard', icon: 'dashboard', url: './dashboard' },
     { label: 'Planificador', icon: 'edit_note', url: './planner' },
     { label: 'Torneos', icon: 'emoji_events', url: './tournament' },
     { label: 'Equipo', icon: 'group', url: './team' },

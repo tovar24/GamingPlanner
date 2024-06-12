@@ -61,7 +61,6 @@ export class AuthService {
       (response: any) => {
         // Redirige al usuario al login
         this.router.navigate(['auth/login']);
-        // window.location.href = 'login'
       }, (error: any) => {
         console.error('Algo salió mal con el registro', error);
       }
