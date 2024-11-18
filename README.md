@@ -10,9 +10,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Spanish
 
-Instalar node.js 20.11.1.
+Instalar node.js `https://nodejs.org/en`.
 
-Instalar AngularCLI 17.2.2.
+Instalar AngularCLI 17.3.5 `npm install -g @angular/cli`.
 
 Abrir la terminal de Visual Studio Code y ejecutar el comando `npm install`.
 
@@ -24,9 +24,9 @@ Ejecutar el comando `ng serve -o` para iniciar la app.
 
 ## English
 
-Install node.js.
+Install node.js `https://nodejs.org/en`.
 
-Install AngularCLI.
+Install AngularCLI `npm install -g @angular/cli`.
 
 Open the Visual Studio Code terminal and run the `npm install` command.
 
