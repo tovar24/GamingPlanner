@@ -10,7 +10,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Spanish
 
-Instalar node.js `https://nodejs.org/en`.
+Instalar [node.js](https://nodejs.org/en).
 
 Instalar AngularCLI 17.3.5 `npm install -g @angular/cli`.
 
@@ -24,7 +24,7 @@ Ejecutar el comando `ng serve -o` para iniciar la app.
 
 ## English
 
-Install node.js `https://nodejs.org/en`.
+Install [node.js](https://nodejs.org/en).
 
 Install AngularCLI `npm install -g @angular/cli`.
 
