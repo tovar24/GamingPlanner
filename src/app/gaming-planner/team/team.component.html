@@ -39,7 +39,8 @@
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let item">
-          <button mat-icon-button color="warn" (click)="deleteMember(item)">
+          <button *ngIf="this.userRol == '1' || this.userRol == '2'" mat-icon-button color="warn"
+            (click)="deleteMember(item)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
@@ -51,15 +52,14 @@
 
   </div>
 
-  <div class="card">
+  <div class="card card-add"  *ngIf="this.userRol == '1' || this.userRol == '2'">
     <form [formGroup]="formTeam" (ngSubmit)="addMember()">
       <mat-form-field>
         <mat-label>Equipo</mat-label>
         <mat-select formControlName="idTeam" required>
-          <mat-option value="1">CROW DYNASTY</mat-option>
-          <mat-option value="2">FUSYON</mat-option>
-          <mat-option value="3">KRÜ</mat-option>
-          <mat-option value="4">SENTINELS</mat-option>
+          <mat-option [value]="userTeamId">
+            {{ teamName }}
+          </mat-option>
         </mat-select>
         <mat-error *ngIf="formTeam.get('idTeam')">
           El equipo es obligatorio

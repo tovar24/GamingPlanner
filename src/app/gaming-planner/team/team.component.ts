@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TeamService } from './team.service';
 import { AuthService } from '../../auth/services/auth.service';
+import { ProfileService } from './../profile/profile.service';
+import { User } from '../../auth/interfaces/user.interface';
 
 export interface membersTeam {
   name: string;
@@ -23,21 +25,37 @@ export class TeamComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['name', 'email', 'rol', 'delete'];
   dataSource = new MatTableDataSource();
 
+  public user?: User;
   public rol: any = [];
   public team: any = [];
   public teamName: any;
+  public userRol: any;
+  public userTeamId: any;
+  private currentUserId = this.authService.currentUser?.id;
   public formTeam!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private teamService: TeamService,
-    private authService: AuthService
+    private authService: AuthService,
+    private profileService: ProfileService
   ) {
     this.formTeam = this.fb.group({
       idTeam: ['', Validators.required],
       name: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
+
+   getUser(id: any) {
+    this.profileService.getUserById(id).subscribe(
+      (response: any) => {
+        this.user = response.map((item: any) => {
+          this.userRol = item.idRol;
+        });
+      }
+    );
+  }
+
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -56,9 +74,11 @@ export class TeamComponent implements OnInit, AfterViewInit {
     this.teamService.getTeamById(id).subscribe(
       (response: any) => {
         this.team = response;
+
         this.team.map(
           (item: any) => {
             this.teamName = item.name;
+            this.userTeamId = item.id;
           }
         );
       }
@@ -122,6 +142,8 @@ export class TeamComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.getRoles();
+    this.getUser(this.currentUserId);
     this.getTeamById(this.authService.currentUser?.idTeam);
     this.getMembersTeam(this.authService.currentUser?.idTeam);
   }
