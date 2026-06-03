@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 -- Base de datos: `gaming_planner`
 --
 
-CREATE DATABASE IF NOT EXISTS gaming_planner
-
 -- --------------------------------------------------------
 
 --
