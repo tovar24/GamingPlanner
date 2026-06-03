@@ -32,8 +32,8 @@
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       $requestUri = $_SERVER['REQUEST_URI'];
       // $jsonData = file_get_contents('php://input');
-      // $data = json_decode($jsonData); 
-      
+      // $data = json_decode($jsonData);
+
       $_router = new Router($requestUri);
       $_router->handleGet($conn);
     }
@@ -42,8 +42,8 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $requestUri = $_SERVER['REQUEST_URI'];
       $jsonData = file_get_contents('php://input');
-      $data = json_decode($jsonData); 
-      
+      $data = json_decode($jsonData);
+
       $_router = new Router($requestUri);
       $_router->handlePost($conn, $data);
     }
@@ -52,22 +52,23 @@
     if ($_SERVER['REQUEST_METHOD'] == 'PUT') {
       $requestUri = $_SERVER['REQUEST_URI'];
       $jsonData = file_get_contents('php://input');
-      $data = json_decode($jsonData); 
-      
+      $data = json_decode($jsonData);
+
       $_router = new Router($requestUri);
       $_router->handlePut($conn, $data);
     }
 
     // Borrar
-    if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-      $requestUri = $_SERVER['REQUEST_URI'];
-      $_router = new Router($requestUri);
-      $_router->handleDelete($conn);
-    }
+     if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+       $requestUri = $_SERVER['REQUEST_URI'];
+       $_router = new Router($requestUri);
+       $_router->handleDelete($conn);
+       exit();
+     }
 
     // En caso de que no se haya ejecutado ninguna opción
     header("HTTP/1.1 400 Bad Request");
-    
+
   } catch (PDOException $e) {
     // Manejar cualquier excepción PDO que pueda ocurrir
     http_response_code(500);
