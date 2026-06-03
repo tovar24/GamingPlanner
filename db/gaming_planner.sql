@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-06-2024 a las 23:28:03
+-- Tiempo de generación: 03-06-2026 a las 20:08:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -55,7 +55,17 @@ INSERT INTO `activities` (`id`, `date`, `idTipeAct`, `idTeam`) VALUES
 (18, '2024-06-02', 3, 3),
 (19, '2024-06-02', 1, 3),
 (20, '2024-06-02', 2, 3),
-(21, '2024-06-04', 1, 3);
+(21, '2024-06-04', 1, 3),
+(22, '2024-06-13', 2, 3),
+(23, '2026-06-02', 1, 3),
+(24, '2026-06-03', 1, 3),
+(25, '2026-06-04', 2, 3),
+(27, '2026-06-05', 3, 3),
+(28, '2026-06-01', 2, 3),
+(29, '2026-06-01', 3, 3),
+(30, '2026-06-02', 1, 3),
+(31, '2026-06-08', 2, 3),
+(32, '2026-06-09', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -218,7 +228,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `idRol`, `idTeam`) VALUE
 (2, 'pruebaAPI', 'prueba1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, 1),
 (5, 'prueba2', 'prueba2@gmail.com', '12345', 3, 1),
 (7, 'Camilo', 'camilo@gmail.com', '$2y$10$vM8x4NOk/nUsIn7M8F6CQODuFCNojlCaAZMjvxZC4Xo2QCC2.tbW2', 3, 3),
-(8, 'Cristian', 'cristian@gmail.com', '$2y$10$z7LxjmUNjGn80888/ZeyueBBwBRcOv.KvmCJbYGcbRrwjkfXpSIgq', 1, 3);
+(8, 'Cristian', 'cristian@gmail.com', '$2y$10$z7LxjmUNjGn80888/ZeyueBBwBRcOv.KvmCJbYGcbRrwjkfXpSIgq', 1, 3),
+(9, 'jose', 'jose@gmail.com', '$2y$10$QN64m4hOTVDLLBuOTADCiey2KAmGJR5c66DqsXGHsfwe1TmqOa3vu', 1, 3),
+(10, 'Sofia', 'sofia@gmail.com', '$2y$10$G1H7ycgHO/5SkPQ5NmRSr.cKMC4Js5te0h1RfaYih7xbNlqTwyXO.', 4, 3),
+(11, 'prueba rol 1', 'pruebarol@gmail.com', '$2y$10$qU5hraNfgjk4lqPZybywsenUrMaytq08L7eC/z0t1IaCy38/RmeE2', 2, 3);
 
 -- --------------------------------------------------------
 
@@ -324,7 +337,7 @@ ALTER TABLE `users_token`
 -- AUTO_INCREMENT de la tabla `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -372,7 +385,7 @@ ALTER TABLE `tournament_team`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `users_token`
