@@ -59,13 +59,21 @@
       }
     }
 
-    // Método para manejar solicitudes DELETE 
+    // Método para manejar solicitudes DELETE
     public function handleDelete($conn) {
-      // Verificar si se ha enviado el parámetro 'id' en la URL
-      if (isset($_GET['id'])) {
-        // Incluir archivo con las funciones de eliminación 
-        require_once "deletes.php";
+
+      require_once __DIR__ . "/deletes.php";
+
+      $requestUri = $_SERVER['REQUEST_URI'];
+
+      if (strpos($requestUri, 'deleteActivityById') !== false) {
+        deleteActivityById($conn);
+        return;
+      }
+
+      if (strpos($requestUri, 'deleteUser') !== false) {
         deleteUser($conn);
+        return;
       }
     }
   }
