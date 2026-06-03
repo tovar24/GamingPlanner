@@ -16,4 +16,9 @@ export class PlannerService {
   getActivitiesById(idTeam: any): Observable<any> {
     return this.http.get(`${ this.baseUrl }/getActivitiesById?idTeam=` + idTeam);
   }
+
+  deleteActivityById(idActivity: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/deleteActivityById?id=${idActivity}`);
+  }
+
 }

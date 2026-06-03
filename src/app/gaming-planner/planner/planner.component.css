@@ -6,9 +6,102 @@
 
 .card-week {
   width: 75%;
-  height: 350px;
+  max-height: 500px;
   background-color: #CBAA62;
   border-radius: 15px;
+  flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.information{
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.week-table-container {
+  max-height: 450px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 15px;
+}
+
+.week-table-container table {
+  width: 100%;
+}
+
+.week-table-container th.mat-header-cell,
+.week-table-container .mat-mdc-header-cell {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #2FA2AE;
+}
+
+.week-toolbar {
+  width: 100%;
+}
+
+.year-select {
+  width: 140px;
+}
+
+.week-arrow-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.activity-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 0;
+  height: 100%;
+}
+
+.activity-text {
+  line-height: 1.2;
+}
+
+.activity-cell .delete-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  flex: 0 0 24px;
+}
+
+.activity-cell .delete-btn mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+}
+
+.week-table-container table {
+  width: 100%;
+  table-layout: fixed;
+}
+.week-header,
+.header-date {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.week-table-container th.mat-header-cell,
+.week-table-container .mat-mdc-header-cell {
+  text-align: center;
 }
 
 form {
