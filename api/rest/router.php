@@ -64,6 +64,10 @@
       // Verifica la solicitud URI y llama a la función correspondiente
       if ($this->requestUri === '/api/rest/posts.php/updateTeam') {
         updateTeam($conn, $data);
+        return;
+      } else if ($this->requestUri === '/api/rest/posts.php/updateUserRol') {
+        updateUserRol($conn, $data);
+        return;
       }
     }
 
