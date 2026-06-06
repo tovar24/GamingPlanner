@@ -20,16 +20,11 @@ function getAllRoles($conn) {
     header('Content-Type: application/json');
     http_response_code(200);
     echo json_encode($result);
+    exit();
   } catch (PDOException $e) {
     // Manejar cualquier excepción PDO que pueda ocurrir
-    http_response_code(500);
-    error_log("Error en getAllRol: " . $e->getMessage());
-    echo "Error al obtener los roles";
-  } catch (Exception $e) {
-    // Manejar cualquier otra excepción que pueda ocurrir
-    http_response_code(500);
-    error_log("Error en getAllRol: " . $e->getMessage());
-    echo "Error al obtener los roles";
+    http_response_code(404);
+    echo $e->getMessage();
   }
 }
 
@@ -37,10 +32,34 @@ function getAllRoles($conn) {
     try {
       // Preparar la consulta SQL para buscar el usuario por medio del id
       $sql = $conn->prepare("SELECT * FROM users WHERE id = :id");
-  
+
       // Enlazar el valor del id a la consulta preparada
       $sql->bindValue(':id', $_GET['id']);
-  
+
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Establecer el modo de extracción de resultados a un array asociativo
+      // y obtener los resultados de la consulta
+      $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+      // Enviar una respuesta HTTP 200 OK y el JSON con el resultado
+      http_response_code(200);
+      header('Content-Type: application/json');
+      echo json_encode($result);
+      exit();
+    } catch (PDOException $e) {
+      // Manejar cualquier excepción PDO que pueda ocurrir
+      http_response_code(404);
+      echo $e->getMessage();
+    }
+  }
+
+  function getAllUsers($conn) {
+    try {
+      // Preparar la consulta SQL para que devuelva todos los usuarios
+      $sql = $conn->prepare("SELECT * FROM users");
+
       // Ejecutar la consulta preparada
       $sql->execute();
 
@@ -67,7 +86,7 @@ function getAllRoles($conn) {
 
       // Enlazar el valor del id a la consulta preparada
       $sql->bindValue(':id', $_GET['id']);
-  
+
       // Ejecutar la consulta preparada
       $sql->execute();
 
@@ -93,7 +112,7 @@ function getAllRoles($conn) {
 
       // Enlazar el valor del idTeam a la consulta preparada
       $sql->bindValue(':idTeam', $_GET['idTeam']);
-  
+
       // Ejecutar la consulta preparada
       $sql->execute();
 
@@ -123,7 +142,7 @@ function getAllRoles($conn) {
       // Enlazar el valor del idTeam a la consulta preparada
       $sql->bindValue(':currentMonth', $currentMonth);
       $sql->bindValue(':idTeam', $_GET['idTeam']);
-  
+
       // Ejecutar la consulta preparada
       $sql->execute();
 

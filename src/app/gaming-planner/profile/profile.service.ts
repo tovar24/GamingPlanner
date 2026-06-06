@@ -16,4 +16,17 @@ export class ProfileService {
   getUserById(id: any): Observable<any> {
     return this.http.get(`${ this.baseUrl }/getUserById?id=` + id);
   }
+
+  getAllUsers(): Observable<any> {
+    return this.http.get(`${ this.baseUrl }/getAllUsers`);
+  }
+
+  getAllRoles(): Observable<any> {
+    return this.http.get(`${ this.baseUrl }/getAllRoles`);
+  }
+
+  updateRol(data: any): Observable<any> {
+    const jsonData = JSON.stringify(data);
+    return this.http.put(`${ this.baseUrl }/updateUserRol`, jsonData);
+  }
 }

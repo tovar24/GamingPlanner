@@ -17,14 +17,22 @@
       // Verifica la solicitud URI y llama a la función correspondiente
       if (strpos($this->requestUri, '/api/rest/posts.php/getAllRoles') !== false) {
         getAllRoles($conn);
+        return;
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getUserById') !== false) {
         getUserById($conn);
+        return;
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getMembersTeam') !== false) {
         getMembersTeam($conn);
+        return;
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getActivitiesById') !== false) {
         getActivitiesById($conn);
+        return;
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getTeamById') !== false) {
         getTeamById($conn);
+        return;
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getAllUsers') !== false) {
+        getAllUsers($conn);
+        return;
       }
     }
 
