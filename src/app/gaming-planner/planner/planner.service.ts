@@ -13,8 +13,8 @@ export class PlannerService {
     return this.http.post(`${this.baseUrl}/insertActivities`, jsonData);
   }
 
-  getActivitiesById(idTeam: any): Observable<any> {
-    return this.http.get(`${ this.baseUrl }/getActivitiesById?idTeam=` + idTeam);
+  getActivitiesById(idTeam: any,month: number, year: number): Observable<any> {
+    return this.http.get(`${ this.baseUrl }/getActivitiesById?idTeam=` + idTeam + `&month=` + month + `&year=` + year);
   }
 
   deleteActivityById(idActivity: number): Observable<any> {
