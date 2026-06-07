@@ -35,7 +35,7 @@
                 }">
               {{ item.Monday?.name }}</div>
               <button mat-icon-button class="delete-btn" color="warn" type="button"
-              *ngIf="item.Monday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3')"
+              *ngIf="item.Monday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3' || this.userRol == '5')"
               (click)="deleteActivity(item.Monday.id)">
                 <mat-icon>delete</mat-icon>
               </button>
@@ -59,7 +59,7 @@
                 }">
               {{ item.Tuesday?.name }}</div>
               <button mat-icon-button class="delete-btn" color="warn" type="button"
-              *ngIf="item.Tuesday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3')"
+              *ngIf="item.Tuesday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3' || this.userRol == '5')"
               (click)="deleteActivity(item.Tuesday.id)">
                 <mat-icon>delete</mat-icon>
               </button>
@@ -83,7 +83,7 @@
                 }">
               {{ item.Wednesday?.name }}</div>
               <button mat-icon-button class="delete-btn" color="warn" type="button"
-              *ngIf="item.Wednesday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3')"
+              *ngIf="item.Wednesday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3' || this.userRol == '5')"
               (click)="deleteActivity(item.Wednesday.id)">
                 <mat-icon>delete</mat-icon>
               </button>
@@ -108,7 +108,7 @@
                 }">
               {{ item.Thursday?.name }}</div>
               <button mat-icon-button class="delete-btn" color="warn" type="button"
-              *ngIf="item.Thursday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3')"
+              *ngIf="item.Thursday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3' || this.userRol == '5')"
               (click)="deleteActivity(item.Thursday.id)">
                 <mat-icon>delete</mat-icon>
               </button>
@@ -132,7 +132,7 @@
                 }">
               {{ item.Friday?.name }}</div>
               <button mat-icon-button class="delete-btn" color="warn" type="button"
-              *ngIf="item.Friday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3')"
+              *ngIf="item.Friday?.name && (this.userRol == '1' || this.userRol == '2' || this.userRol == '3' || this.userRol == '5')"
               (click)="deleteActivity(item.Friday.id)">
                 <mat-icon>delete</mat-icon>
               </button>
@@ -165,7 +165,7 @@
       </mat-select>
     </mat-form-field>
 
-    <div class="card-form-container" *ngIf="this.userRol == '1' || this.userRol == '2' || this.userRol == '3'">
+    <div class="card-form-container" *ngIf="this.userRol == '1' || this.userRol == '2' || this.userRol == '3' || this.userRol == '5'">
       <mat-card class="card-form">
         <form [formGroup]="plannerForm" (ngSubmit)="addActivity()" [class.form-submitted]="submitted">
           <mat-form-field>
