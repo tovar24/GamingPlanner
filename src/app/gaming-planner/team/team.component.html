@@ -39,7 +39,7 @@
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let item">
-          <button *ngIf="this.userRol == '1' || this.userRol == '2'" mat-icon-button color="warn"
+          <button *ngIf="this.userRol == '1' || this.userRol == '2' || this.userRol == '5'" mat-icon-button color="warn"
             (click)="deleteMember(item)">
             <mat-icon>delete</mat-icon>
           </button>
@@ -52,7 +52,7 @@
 
   </div>
 
-  <div class="card card-add"  *ngIf="this.userRol == '1' || this.userRol == '2'">
+  <div class="card card-add"  *ngIf="this.userRol == '1' || this.userRol == '2' || this.userRol == '5'">
     <form [formGroup]="formTeam" (ngSubmit)="addMember()">
       <mat-form-field>
         <mat-label>Equipo</mat-label>
