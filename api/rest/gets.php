@@ -28,6 +28,30 @@ function getAllRoles($conn) {
   }
 }
 
+function getAllTeams($conn) {
+    try {
+      // Preparar la consulta SQL para que devuelva todos los usuarios
+      $sql = $conn->prepare("SELECT * FROM team");
+
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Establecer el modo de extracción de resultados a un array asociativo
+      // y obtener los resultados de la consulta
+      $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+      // Enviar una respuesta HTTP 200 OK y el JSON con el resultado
+      http_response_code(200);
+      header('Content-Type: application/json');
+      echo json_encode($result);
+      exit();
+    } catch (PDOException $e) {
+      // Manejar cualquier excepción PDO que pueda ocurrir
+      http_response_code(404);
+      echo $e->getMessage();
+    }
+  }
+
   function getUserById($conn) {
     try {
       // Preparar la consulta SQL para buscar el usuario por medio del id

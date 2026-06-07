@@ -18,6 +18,9 @@
       if (strpos($this->requestUri, '/api/rest/posts.php/getAllRoles') !== false) {
         getAllRoles($conn);
         return;
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getAllTeams') !== false) {
+        getAllTeams($conn);
+        return;
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getUserById') !== false) {
         getUserById($conn);
         return;
