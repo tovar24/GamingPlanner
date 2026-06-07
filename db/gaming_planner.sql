@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 03-06-2026 a las 20:08:27
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-06-2026 a las 02:38:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -65,7 +65,9 @@ INSERT INTO `activities` (`id`, `date`, `idTipeAct`, `idTeam`) VALUES
 (29, '2026-06-01', 3, 3),
 (30, '2026-06-02', 1, 3),
 (31, '2026-06-08', 2, 3),
-(32, '2026-06-09', 3, 3);
+(32, '2026-06-09', 3, 3),
+(34, '2026-07-02', 2, 3),
+(35, '2026-07-07', 3, 3);
 
 -- --------------------------------------------------------
 
@@ -127,7 +129,8 @@ INSERT INTO `rol` (`id`, `rol`, `privileges`) VALUES
 (1, 'CEO', b'1'),
 (2, 'STAFF', NULL),
 (3, 'COACH', NULL),
-(4, 'PLAYER', NULL);
+(4, 'PLAYER', NULL),
+(5, 'SUPERADMIN', b'1');
 
 -- --------------------------------------------------------
 
@@ -215,7 +218,7 @@ CREATE TABLE `users` (
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `idRol` int(11) NOT NULL,
+  `idRol` int(11) DEFAULT NULL,
   `idTeam` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -224,14 +227,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `idRol`, `idTeam`) VALUES
-(1, 'ADMIN', 'admin1234@gmail.com', 'c93ccd78b2076528346216b3b2f701e6', 1, 1),
+(1, 'ADMIN', 'admin1234@gmail.com', 'c93ccd78b2076528346216b3b2f701e6', 1, NULL),
 (2, 'pruebaAPI', 'prueba1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, 1),
 (5, 'prueba2', 'prueba2@gmail.com', '12345', 3, 1),
 (7, 'Camilo', 'camilo@gmail.com', '$2y$10$vM8x4NOk/nUsIn7M8F6CQODuFCNojlCaAZMjvxZC4Xo2QCC2.tbW2', 3, 3),
 (8, 'Cristian', 'cristian@gmail.com', '$2y$10$z7LxjmUNjGn80888/ZeyueBBwBRcOv.KvmCJbYGcbRrwjkfXpSIgq', 1, 3),
-(9, 'jose', 'jose@gmail.com', '$2y$10$QN64m4hOTVDLLBuOTADCiey2KAmGJR5c66DqsXGHsfwe1TmqOa3vu', 1, 3),
+(9, 'jose', 'jose@gmail.com', '$2y$10$QN64m4hOTVDLLBuOTADCiey2KAmGJR5c66DqsXGHsfwe1TmqOa3vu', 4, 3),
 (10, 'Sofia', 'sofia@gmail.com', '$2y$10$G1H7ycgHO/5SkPQ5NmRSr.cKMC4Js5te0h1RfaYih7xbNlqTwyXO.', 4, 3),
-(11, 'prueba rol 1', 'pruebarol@gmail.com', '$2y$10$qU5hraNfgjk4lqPZybywsenUrMaytq08L7eC/z0t1IaCy38/RmeE2', 2, 3);
+(11, 'prueba rol 1', 'pruebarol@gmail.com', '$2y$10$qU5hraNfgjk4lqPZybywsenUrMaytq08L7eC/z0t1IaCy38/RmeE2', 2, 3),
+(12, 'superadmin', 'superadmin@gmail.com', '$2y$10$cZIGHeypknFiLXENFKiB6.hRRQLk0SwjuMmEpJ11pZZafviXwnDga', 5, 1),
+(13, 'prueba user', 'pruebauser@gmail.com', '$2y$10$T/WBrMIk2UR1uyUEMJ6zkOUsqbYdItQxOT9exwJRZYluUkRKCcBXe', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -337,7 +342,7 @@ ALTER TABLE `users_token`
 -- AUTO_INCREMENT de la tabla `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -355,7 +360,7 @@ ALTER TABLE `game_team`
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `team`
@@ -385,7 +390,7 @@ ALTER TABLE `tournament_team`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `users_token`
