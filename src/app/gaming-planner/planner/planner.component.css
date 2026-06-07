@@ -1,7 +1,9 @@
 .main {
+  max-width: 98%;
   display: flex;
   flex-direction: column;
-  padding-top: 15px;
+  padding-left: 2%;
+  padding-top: 3%;
 }
 
 .card-week {
@@ -51,8 +53,8 @@
   width: 100%;
 }
 
-.year-select {
-  width: 140px;
+.date-select {
+  width: 90%;
 }
 
 .week-arrow-btn {
@@ -110,7 +112,70 @@ form {
 }
 
 .card-form {
-  width: 75%;
+  width: 100%;
+  background-color: #2FA2AE;
   border-radius: 15px;
+}
+
+.card-form-container {
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  background-color: #2FA2AE;
+  width: 90%;
+  padding: 10%;
+}
+
+::ng-deep .mat-mdc-select-panel {
+  padding: 0 !important;
+}
+
+::ng-deep .mat-mdc-option {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.option-vod {
+  color: white !important;
+  background-color: #73f380 !important;
+}
+.option-teorico {
+  background-color: #a9aef6  !important;
+}
+.option-pracc {
+  background-color: #fbe87c !important;
+}
+
+.activity-text {
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.activity-vod {
+  background-color: #7df58e;
+  color: black;
+}
+
+.activity-teorico {
+  background-color: #7478ee;
+  color: white;
+}
+
+.activity-pracc {
+  background-color: #fff08a;
+  color: black;
+}
+
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mat-mdc-floating-label {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+form:not(.form-submitted) ::ng-deep .mat-mdc-select-arrow {
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mdc-line-ripple::before,
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mdc-line-ripple::after {
+  border-bottom-color: rgba(0, 0, 0, 0.38) !important;
 }
 
