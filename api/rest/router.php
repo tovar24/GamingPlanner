@@ -36,6 +36,9 @@
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getAllUsers') !== false) {
         getAllUsers($conn);
         return;
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getUsersWithoutTeam') !== false) {
+        getUsersWithoutTeam($conn);
+        return;
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getTournamentTeam') !== false) {
         getTournamentTeam($conn);
         return;

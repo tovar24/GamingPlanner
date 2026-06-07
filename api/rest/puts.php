@@ -3,18 +3,18 @@
   function updateTeam($conn, $data) {
     try {
       // Preparar la consulta SQL para actualizar el idTeam de un usuario
-      $sql = $conn->prepare("UPDATE users SET idTeam = :idTeam WHERE users.name = :name");
+      $sql = $conn->prepare("UPDATE users SET idTeam = :idTeam WHERE id = :idUser");
 
       // Enlazar los valores de los parámetros a la consulta preparada
       $sql->bindValue(':idTeam', $data->idTeam);
-      $sql->bindValue(':name', $data->name);
+      $sql->bindValue(':idUser', $data->idUser);
 
       // Ejecutar la consulta preparada
       $sql->execute();
 
       // Preparar una nueva consulta para obtener el registro actualizado
-      $sql = $conn->prepare("SELECT name, email, idRol, idTeam FROM users WHERE name = :name");
-      $sql->bindValue(':name', $data->name);
+      $sql = $conn->prepare("SELECT u.name, u.email, u.idRol, u.idTeam FROM users u WHERE u.id = :idUser");
+      $sql->bindValue(':idUser', $data->idUser);
       $sql->execute();
 
       // Establecer el modo de extracción de resultados a un array asociativo
