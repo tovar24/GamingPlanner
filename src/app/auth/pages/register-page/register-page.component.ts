@@ -48,7 +48,7 @@ export class RegisterPageComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      idRol: ['', Validators.required]
+      idRol: [null]
     });
   }
 

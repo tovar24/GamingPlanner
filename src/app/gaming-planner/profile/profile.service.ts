@@ -25,7 +25,7 @@ export class ProfileService {
     return this.http.get(`${ this.baseUrl }/getAllRoles`);
   }
 
-  updateRol(data: any): Observable<any> {
+  updateUserRol(data: any): Observable<any> {
     const jsonData = JSON.stringify(data);
     return this.http.put(`${ this.baseUrl }/updateUserRol`, jsonData);
   }
