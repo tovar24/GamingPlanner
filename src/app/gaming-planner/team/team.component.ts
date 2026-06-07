@@ -31,6 +31,9 @@ export class TeamComponent implements OnInit, AfterViewInit {
   public teamName: any;
   public userRol: any;
   public userTeamId: any;
+  public submitted = false;
+  public allTeams: any[] = [];
+  public usersWithoutTeam: any[] = [];
   private currentUserId = this.authService.currentUser?.id;
   public formTeam!: FormGroup;
 
@@ -42,18 +45,50 @@ export class TeamComponent implements OnInit, AfterViewInit {
   ) {
     this.formTeam = this.fb.group({
       idTeam: ['', Validators.required],
-      name: ['', [Validators.required, Validators.minLength(3)]]
+      idUser: ['', Validators.required]
     });
   }
 
-   getUser(id: any) {
+  getUser(id: any) {
     this.profileService.getUserById(id).subscribe(
       (response: any) => {
         this.user = response.map((item: any) => {
           this.userRol = item.idRol;
+
+          if(this.userRol == '5') {
+            this.getAllTeams();
+          }
         });
       }
     );
+  }
+
+  getUserWithoutTeam() {
+    this.teamService.getUsersWithoutTeam().subscribe(
+      (response: any) => {
+        this.usersWithoutTeam = response;
+      }
+    )
+  }
+
+  getAllTeams() {
+    this.teamService.getAllTeams().subscribe(
+      (response: any) => {
+        this.allTeams = response;
+      }
+    );
+  }
+
+  onTeamChange(selectedTeamId: any) {
+    if(this.userRol == '5') {
+      const selectedTeam = this.allTeams.find(team => team.id == selectedTeamId);
+
+      if (selectedTeam) {
+        this.teamName = selectedTeam.name;
+      }
+
+      this.getMembersTeam(selectedTeamId);
+    }
   }
 
 
@@ -96,32 +131,34 @@ export class TeamComponent implements OnInit, AfterViewInit {
 
   deleteMember(item: any) {
     const data = {
-      idTeam: item.idTeam = null,
-      name: item.name
+      idTeam: null,
+      idUser: item.id
     };
 
     this.teamService.updateTeam(data).subscribe(
       (response: any) => {
-        this.getMembersTeam(this.authService.currentUser?.idTeam);
+        const currentSelectedTeam = this.formTeam.get('idTeam')?.value || this.authService.currentUser?.idTeam;
+        this.getMembersTeam(currentSelectedTeam);
+        this.getUserWithoutTeam();
       }
     );
   }
 
   addMember() {
-    const data = this.formTeam.value;
-
+    this.submitted = true;
     if (this.formTeam.invalid) {
       return;
     }
 
+    const data = this.formTeam.value;
+
     this.teamService.updateTeam(data).subscribe(
       (response: any) => {
-        if (response.idTeam === this.authService.currentUser?.idTeam) {
-          this.members.push(response);
-          this.getMembersTeam(this.authService.currentUser?.idTeam);
-        } else {
-          this.getMembersTeam(this.authService.currentUser?.idTeam);
-        }
+        const currentSelectedTeam = this.formTeam.get('idTeam')?.value;
+        this.getMembersTeam(currentSelectedTeam);
+        this.formTeam.get('idUser')?.reset();
+        this.submitted = false;
+        this.getUserWithoutTeam();
       },
       (error: any) => {
         console.error('Error:', error);
@@ -146,5 +183,6 @@ export class TeamComponent implements OnInit, AfterViewInit {
     this.getUser(this.currentUserId);
     this.getTeamById(this.authService.currentUser?.idTeam);
     this.getMembersTeam(this.authService.currentUser?.idTeam);
+    this.getUserWithoutTeam();
   }
 }

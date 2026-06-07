@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2026 a las 02:38:15
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 07-06-2026 a las 14:16:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -228,15 +228,51 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `idRol`, `idTeam`) VALUES
 (1, 'ADMIN', 'admin1234@gmail.com', 'c93ccd78b2076528346216b3b2f701e6', 1, NULL),
-(2, 'pruebaAPI', 'prueba1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, 1),
-(5, 'prueba2', 'prueba2@gmail.com', '12345', 3, 1),
-(7, 'Camilo', 'camilo@gmail.com', '$2y$10$vM8x4NOk/nUsIn7M8F6CQODuFCNojlCaAZMjvxZC4Xo2QCC2.tbW2', 3, 3),
-(8, 'Cristian', 'cristian@gmail.com', '$2y$10$z7LxjmUNjGn80888/ZeyueBBwBRcOv.KvmCJbYGcbRrwjkfXpSIgq', 1, 3),
-(9, 'jose', 'jose@gmail.com', '$2y$10$QN64m4hOTVDLLBuOTADCiey2KAmGJR5c66DqsXGHsfwe1TmqOa3vu', 4, 3),
-(10, 'Sofia', 'sofia@gmail.com', '$2y$10$G1H7ycgHO/5SkPQ5NmRSr.cKMC4Js5te0h1RfaYih7xbNlqTwyXO.', 4, 3),
-(11, 'prueba rol 1', 'pruebarol@gmail.com', '$2y$10$qU5hraNfgjk4lqPZybywsenUrMaytq08L7eC/z0t1IaCy38/RmeE2', 2, 3),
-(12, 'superadmin', 'superadmin@gmail.com', '$2y$10$cZIGHeypknFiLXENFKiB6.hRRQLk0SwjuMmEpJ11pZZafviXwnDga', 5, 1),
-(13, 'prueba user', 'pruebauser@gmail.com', '$2y$10$T/WBrMIk2UR1uyUEMJ6zkOUsqbYdItQxOT9exwJRZYluUkRKCcBXe', 4, 1);
+(2, 'pruebaAPI', 'prueba1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, NULL),
+(5, 'prueba2', 'prueba2@gmail.com', '12345', 3, NULL),
+(7, 'Camilo', 'camilo@gmail.com', '$2y$10$vM8x4NOk/nUsIn7M8F6CQODuFCNojlCaAZMjvxZC4Xo2QCC2.tbW2', 3, NULL),
+(8, 'Cristian', 'cristian@gmail.com', '$2y$10$z7LxjmUNjGn80888/ZeyueBBwBRcOv.KvmCJbYGcbRrwjkfXpSIgq', 1, NULL),
+(9, 'jose', 'jose@gmail.com', '$2y$10$QN64m4hOTVDLLBuOTADCiey2KAmGJR5c66DqsXGHsfwe1TmqOa3vu', 4, NULL),
+(10, 'Sofia', 'sofia@gmail.com', '$2y$10$G1H7ycgHO/5SkPQ5NmRSr.cKMC4Js5te0h1RfaYih7xbNlqTwyXO.', 4, NULL),
+(11, 'prueba rol 1', 'pruebarol@gmail.com', '$2y$10$qU5hraNfgjk4lqPZybywsenUrMaytq08L7eC/z0t1IaCy38/RmeE2', 2, NULL),
+(12, 'superadmin', 'superadmin@gmail.com', '$2y$10$cZIGHeypknFiLXENFKiB6.hRRQLk0SwjuMmEpJ11pZZafviXwnDga', 5, NULL),
+(13, 'prueba user', 'pruebauser@gmail.com', '$2y$10$T/WBrMIk2UR1uyUEMJ6zkOUsqbYdItQxOT9exwJRZYluUkRKCcBXe', 4, NULL),
+(14, 'CEO_CD', 'CeoCrowDinasty@gmail.com', '$2y$10$QT63c0a99smqyMlmzQCI8Ohq6Evjitph/pvXJgoBG0uYuxPbNNpx6', 1, 1),
+(15, 'CEO_FS', 'CeoFusyon@gmail.com', '$2y$10$7vVu31xL5KW3HmtXoWbKherATE3lTld4I7iyx5RWgahxcutEYayk2', 1, 2),
+(16, 'Jugador1_CD', 'Jugador1_CD@gmail.com', '$2y$10$7eyAEzzP2q5fis/Yd5dPk.gWryDHx8wm9CA1nOiEpjhn6gBwHEWZe', 4, 1),
+(17, 'Jugador2_CD', 'Jugador2_CD@gmail.com', '$2y$10$hkhGM0KIGlAnayix6f3VKeTsfm8dj4SKosaqV0BjtajuEFf0tzziK', 4, 1),
+(18, 'Jugador3_CD', 'Jugador3_CD@gmail.com', '$2y$10$UyMpfAC7RzPjsYBNGHuxbeqwKr0oK8bJndlltmWTG2aWx4Yf8E8Aq', 4, 1),
+(19, 'Jugador4_CD', 'Jugador4_CD@gmail.com', '$2y$10$o.KsBGHX7bzW5aGi1puws.TFuqq/.juK8xNz0hBsz6a7HbEdYhYgS', 4, 1),
+(20, 'Jugador5_CD', 'Jugador5_CD@gmail.com', '$2y$10$/h6GSb9avKl0VqhMpfaTXOsrH9r/yjoB9C6I8y0vRNUQEL6JkxBSu', 4, 1),
+(21, 'COACH_CD', 'Coach_CD@gmail.com', '$2y$10$5RJ7uat7BPcRDqqd5B6YSuR898oB7tVCB7efDSuPI8bMqyO981TjW', 3, 1),
+(22, 'STAFF1_CD', 'STAFF1_CD@gmail.com', '$2y$10$iD1zdJhkNfUucgthlHQAM.eTr/RoEhKC.Y2X3PW1zIpOHHasKHQxO', 2, 1),
+(23, 'STAFF2_CD', 'STAFF2_CD@gmail.com', '$2y$10$U8X8.oYNdjkBqC6h7msVG.ewdM3Zecl8PmoQbm8nwDhmLAZILp7Wm', 2, 1),
+(24, 'STAFF1_FS', 'STAFF1_FS@gmail.com', '$2y$10$GuaDvnamk62PKLgV950dketA4GaMNwzTH7C71g7.jluuQemdUFq1.', 2, 2),
+(25, 'STAFF2_FS', 'STAFF2_FS@gmail.com', '$2y$10$Ru9ILk1DcWOTB.M5fuaHI.DFRiaAe07KG05aUeZ/klxPjUcAuCpuS', 2, 2),
+(26, 'COACH_FS', 'COACH_FS@gmail.com', '$2y$10$Lmgf3Qo8MreWnQF0syvBAeKqaPbEpaLh6luTjKvkrtoEW./Tzq6uO', 3, 2),
+(27, 'Jugador1_FS', 'Jugador1_FS@gmail.com', '$2y$10$JIT1Z8LqLt49pRzRnDHQWuIFYVTMRhN5.L7dbsYw4FLgrYRuqJmPq', 4, 2),
+(28, 'Jugador2_FS', 'Jugador2_FS@gmail.com', '$2y$10$AzJzY9DPM9KHYcr1iEPLgO8NgqITFgqZowB4Fk69KyRSQ.UQ7t3wi', 4, 2),
+(29, 'Jugador3_FS', 'Jugador3_FS@gmail.com', '$2y$10$nm5iopbWP4RTE.aRtPCZfOYt5fbVuGcto4Z2sYET3/0rTzMxmDH1u', 4, 2),
+(30, 'Jugador5_FS', 'Jugador5_FS@gmail.com', '$2y$10$3NM5QN1QAscMdP3VkdjdDOKYXwTXJ0yEC80fLy0VZUG5k/By/TOM2', 4, 2),
+(31, 'Jugador4_FS', 'Jugador4_FS@gmail.com', '$2y$10$QuxylD/4X8eu2qvCWy.wueEk6R0kwZmY8w9irpN1d97Sbs.alcxza', 4, 2),
+(32, 'CEO_SEN', 'CEO_SEN@gmail.com', '$2y$10$JF/HqWSYiX3idOplAhACW.kHSHOHy0HJcZZwj5sGdmFLPJQ4GA4SS', 1, 4),
+(33, 'COACH_SEN ', 'COACH_SEN@gmail.com', '$2y$10$6vBpKxNdSyX2.j08DaGBteZGqu5IpGuN9rXiFvDcKfdalB9bSxQnm', 3, 4),
+(34, 'STAFF1_SEN', 'STAFF1_SEN@gmail.com', '$2y$10$6apbl1Y2pexLAisgbFtdTuMIy.dm0Z4NVFcFw/DeniIdtfV8BDNwa', 2, 4),
+(35, 'STAFF2_SEN', 'STAFF2_SEN@gmail.com', '$2y$10$9fsz3jvFnLmXMDzgcmasu.gA0fYdBCksiyKrf9DBUhENX6qXUYAEK', 2, 4),
+(36, 'Jugador1_SEN', 'Jugador1_SEN@gmail.com', '$2y$10$BjPv.TM1Y1sWV5j14i3FvecrP2Z771AKq5ZtdclnVTuc7.EKtj6Rq', 4, 4),
+(37, 'Jugador2_SEN', 'Jugador2_SEN@gmail.com', '$2y$10$Wq1/JavS/02CKVvm.vzOUO4AnHFrRqt9hrYcsI7BF5QHNNV7ND.re', 4, 4),
+(38, 'Jugador3_SEN', 'Jugador3_SEN@gmail.com', '$2y$10$1B/15QVDkRH7YeTAMSdFTeTAxWekYny.8ro2lvjHdtOorzxyino3O', 4, 4),
+(39, 'Jugador4_SEN', 'Jugador4_SEN@gmail.com', '$2y$10$4u0HAj/Sbbn/7BoNDu7J6.xluCJV6miGBJrAHaZqd1BiSU0PqxZW2', 4, 4),
+(40, 'Jugador5_SEN', 'Jugador5_SEN@gmail.com', '$2y$10$ZVm9kHOg5B0tnTYnYtZlXOiB2LwHwwIlJeOKb7a7Qax7XIOq8DlXu', 4, 4),
+(41, 'CEO_KRU', 'CEO_KRU@gmail.com', '$2y$10$zlwNshqKhmQVAAXcHsFKkujHd6eWSpbGSGP5lQIdIPxwC60C2YzDW', 1, 3),
+(42, 'COACH_KRU', 'COACH_KRU@gmail.com', '$2y$10$21/NrkUPPGqOKHdDz9.aHek5n8hzBi8EMA.wmGr3E57btu/Sq6mUK', 3, 3),
+(43, 'STAFF1_KRU', 'STAFF1_KRU@gmail.com', '$2y$10$gGjy7CR2EXq/biqbVmAEdORACKmm5Sb9hL0qQQ3a./DLUg4UryqKe', 2, 3),
+(44, 'STAFF2_KRU', 'STAFF2_KRU@gmail.com', '$2y$10$dDwPsL2U1pY9XMVGUeFmTuK2pphhhH/z0pyx/rlB13ZVuMQ9hKWX.', 2, 3),
+(45, 'Jugador1_KRU', 'Jugador1_KRU@gmail.com', '$2y$10$yuzhOlnJQVYcV7P3j8osR.oAEAyX.AcDnC2c8I2jxM3nWv2aZPMN.', 4, 3),
+(46, 'Jugador2_KRU', 'Jugador2_KRU@gmail.com', '$2y$10$3cKoDrj5GqQf2q3rAQHBR.eZrholdPf9mi8Puai7BdAy1h/f0EuPa', 4, 3),
+(47, 'Jugador3_KRU', 'Jugador3_KRU@gmail.com', '$2y$10$MbJIMb6fi2ngqj87X9VRYuNSO3VUOBW33TtRfJ8Xs6JSt/0ulsUpe', 4, 3),
+(48, 'Jugador4_KRU', 'Jugador4_KRU@gmail.com', '$2y$10$Gv7v/McI/QilFB6hGxIEa.AoCsqre3cZFGelRoG3TbZflPnFbxIFO', 4, 3),
+(49, 'Jugador5_KRU', 'Jugador5_KRU@gmail.com', '$2y$10$CyrbopHa//3Iiod7GOuimOA6almc2g/6RhybNT/FI2VBBNXMDyNly', 4, 3);
 
 -- --------------------------------------------------------
 
@@ -342,7 +378,7 @@ ALTER TABLE `users_token`
 -- AUTO_INCREMENT de la tabla `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
@@ -390,7 +426,7 @@ ALTER TABLE `tournament_team`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `users_token`

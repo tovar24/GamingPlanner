@@ -1,22 +1,27 @@
 .card-main {
   width: 1130px;
-  height: 815px;
+  height: 90%;
   background-color: #CBAA62;
   display: flex;
   align-items: center;
   margin: 0 auto;
+  padding: 2%;
 }
 
 .card {
   width: 1056px;
   height: 500px;
-  margin-top: 3%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .card-add {
   width: 1056px;
-  height: 200px;
+  overflow-y: hidden;
+  height: 100%;
   margin-top: 3%;
+  margin-bottom: 3%;
+  padding: 1%;
 }
 
 .btn-card {
@@ -31,4 +36,17 @@
 .mat-mdc-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mat-mdc-floating-label {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+form:not(.form-submitted) ::ng-deep .mat-mdc-select-arrow {
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mdc-line-ripple::before,
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mdc-line-ripple::after {
+  border-bottom-color: rgba(0, 0, 0, 0.38) !important;
 }
