@@ -5,79 +5,16 @@
 <mat-card class="card-main rounded-4 mt-4">
 
   <div class="d-flex justify-content-evenly pt-5">
-    <mat-card class="card bg-dark text-light">
-      <mat-card-header class="justify-content-center fs-3">Circuito Tormenta</mat-card-header>
+    <mat-card class="card bg-dark text-light" *ngFor="let tournament of tournamentList">
+
+      <mat-card-header class="justify-content-center fs-3">
+        {{tournament.name}}
+      </mat-card-header>
+
       <mat-card-content class="d-flex flex-column gap-4 mt-4">
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="card bg-dark text-light">
-      <mat-card-header class="justify-content-center fs-3">Circuito Tormenta</mat-card-header>
-      <mat-card-content class="d-flex flex-column gap-4 mt-4">
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card class="card bg-dark text-light">
-      <mat-card-header class="justify-content-center fs-3">Circuito Tormenta</mat-card-header>
-      <mat-card-content class="d-flex flex-column gap-4 mt-4">
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
-        </div>
-
-        <div class="d-flex justify-content-around info-matches rounded-4 p-2">
-          <div>Marzo</div>
-          <div>3 Partidos</div>
+        <div class="d-flex justify-content-around info-matches rounded-4 p-2" *ngFor="let game of gameList">
+          <div>{{ game.date | date: 'dd/MM/yyyy' }}</div>
+          <div>{{ game.result }}</div>
         </div>
 
       </mat-card-content>
