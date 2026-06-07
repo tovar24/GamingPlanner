@@ -63,7 +63,7 @@ export class TeamComponent implements OnInit, AfterViewInit {
   }
 
   getRoles() {
-    this.teamService.getAllRol().subscribe(
+    this.teamService.getAllRoles().subscribe(
       (response: any) => {
         this.rol = response;
       }

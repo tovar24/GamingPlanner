@@ -25,8 +25,8 @@ export class ProfileComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.roleForm = this.fb.group({
-      idPlayer: ['', Validators.required],
-      idRol:    ['', Validators.required]
+      idUser: ['', Validators.required],
+      idRol:  ['', Validators.required]
     });
   }
 
@@ -53,18 +53,19 @@ export class ProfileComponent implements OnInit {
   getAllRoles() {
     this.profileService.getAllRoles().subscribe(
       (response: any) => {
-        this.allRoles = response;
+        this.allRoles = response.filter((item: any) => item.id !== 5);
       }
     );
   }
 
-  updateRol() {
+  updateUserRol() {
     if (this.roleForm.invalid) {
       return;
     }
-    // this.setParameters();
+    const data = this.roleForm.value;
 
-    this.profileService.updateRol(this.roleForm.value).subscribe((response: any) => {
+    this.profileService.updateUserRol(data).subscribe((response: any) => {
+      this.getAllUsers();
       this.roleForm.reset();
     });
   }
