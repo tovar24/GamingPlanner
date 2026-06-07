@@ -42,6 +42,9 @@
       } else if (strpos($this->requestUri, '/api/rest/posts.php/getTournamentTeam') !== false) {
         getTournamentTeam($conn);
         return;
+      } else if (strpos($this->requestUri, '/api/rest/posts.php/getGameTeam') !== false) {
+        getGameTeam($conn);
+        return;
       }
     }
 
