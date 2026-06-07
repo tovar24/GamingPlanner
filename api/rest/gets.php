@@ -108,7 +108,7 @@ function getAllRoles($conn) {
   function getMembersTeam($conn) {
     try {
       // Preparar la consulta SQL para buscar el equipo por medio del id
-      $sql = $conn->prepare("SELECT u.name, u.email, r.rol, u.idTeam FROM users u INNER JOIN rol r ON r.id = u.idRol WHERE idTeam = :idTeam");
+      $sql = $conn->prepare("SELECT u.name, u.email, r.rol, u.idTeam FROM users u LEFT JOIN rol r ON r.id = u.idRol WHERE idTeam = :idTeam");
 
       // Enlazar el valor del idTeam a la consulta preparada
       $sql->bindValue(':idTeam', $_GET['idTeam']);
@@ -158,6 +158,32 @@ function getAllRoles($conn) {
       echo json_encode($result);
       exit();
     } catch (PDOException $e) {
+      http_response_code(404);
+      echo $e->getMessage();
+    }
+  }
+
+  function getTournamentTeam($conn) {
+    try {
+      // Preparar la consulta SQL para buscar el equipo por medio del id
+      $sql = $conn->prepare("SELECT tt.*, t.name FROM tournament_team tt LEFT JOIN tournament t ON t.id = tt.idTournament WHERE tt.idTeam = :idTeam");
+
+      // Enlazar el valor del id a la consulta preparada
+      $sql->bindValue(':idTeam', $_GET['idTeam']);
+
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Establecer el modo de extracción de resultados a un array asociativo
+      // y obtener los resultados de la consulta
+      $results = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+      http_response_code(200);
+      header('Content-Type: application/json');
+      echo json_encode($results);
+      exit();
+    } catch (PDOException $e) {
+      // Manejar cualquier excepción PDO que pueda ocurrir
       http_response_code(404);
       echo $e->getMessage();
     }
