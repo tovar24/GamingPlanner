@@ -53,24 +53,38 @@
   </div>
 
   <div class="card card-add"  *ngIf="this.userRol == '1' || this.userRol == '2' || this.userRol == '5'">
-    <form [formGroup]="formTeam" (ngSubmit)="addMember()">
+    <form [formGroup]="formTeam" (ngSubmit)="addMember()" [class.form-submitted]="submitted">
       <mat-form-field>
         <mat-label>Equipo</mat-label>
-        <mat-select formControlName="idTeam" required>
+        <mat-select formControlName="idTeam" required (selectionChange)="onTeamChange($event.value)">
+
+        <ng-container *ngIf="userRol == '5'; else regularUserTemplate">
+          <mat-option *ngFor="let teamItem of allTeams" [value]="teamItem.id">
+            {{ teamItem.name }}
+          </mat-option>
+        </ng-container>
+
+        <ng-template #regularUserTemplate>
           <mat-option [value]="userTeamId">
             {{ teamName }}
           </mat-option>
-        </mat-select>
-        <mat-error *ngIf="formTeam.get('idTeam')">
+        </ng-template>
+
+      </mat-select>
+        <mat-error *ngIf="submitted && formTeam.get('idTeam')">
           El equipo es obligatorio
         </mat-error>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="name">
-        <mat-error *ngIf="formTeam.get('name')">
-          El nombre es obligatorio
+        <mat-label>Seleccionar Usuario</mat-label>
+        <mat-select formControlName="idUser" required>
+          <mat-option *ngFor="let userItem of usersWithoutTeam" [value]="userItem.id">
+            {{ userItem.name }} — ({{ userItem.email }})
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="submitted && formTeam.get('idUser')?.invalid">
+          Debe seleccionar un usuario
         </mat-error>
       </mat-form-field>
 

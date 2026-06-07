@@ -12,12 +12,20 @@ export class TeamService {
     return this.http.get(`${ this.baseUrl }/getAllRoles`);
   }
 
+  getAllTeams(): Observable<any> {
+    return this.http.get(`${ this.baseUrl }/getAllTeams`);
+  }
+
   getTeamById(id: any): Observable<any> {
     return this.http.get(`${ this.baseUrl }/getTeamById?id=` + id);
   }
 
   getMembersTeam(idTeam: any): Observable<any> {
     return this.http.get(`${ this.baseUrl }/getMembersTeam?idTeam=` + idTeam);
+  }
+
+  getUsersWithoutTeam(): Observable<any> {
+    return this.http.get(`${ this.baseUrl }/getUsersWithoutTeam`);
   }
 
   updateTeam(data: any): Observable<any> {
