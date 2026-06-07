@@ -135,12 +135,14 @@ function getAllRoles($conn) {
 
   function getActivitiesById($conn) {
     try {
-      $currentMonth = date('m');
+      $currentMonth = isset($_GET['month']) ? intval($_GET['month']) : intval(date('m'));
+      $currentYear  = isset($_GET['year']) ? intval($_GET['year']) : intval(date('Y'));
       // Preparar la consulta SQL para buscar las actividades por medio del idTeam
-      $sql = $conn->prepare("SELECT a.*, ta.name FROM activities a INNER JOIN tipe_activity ta ON ta.id = a.idTipeAct WHERE MONTH(a.date) = :currentMonth AND a.idTeam = :idTeam");
+      $sql = $conn->prepare("SELECT a.*, ta.name FROM activities a INNER JOIN tipe_activity ta ON ta.id = a.idTipeAct WHERE MONTH(a.date) = :currentMonth AND YEAR(a.date) = :currentYear AND a.idTeam = :idTeam");
 
       // Enlazar el valor del idTeam a la consulta preparada
       $sql->bindValue(':currentMonth', $currentMonth);
+      $sql->bindValue(':currentYear', $currentYear);
       $sql->bindValue(':idTeam', $_GET['idTeam']);
 
       // Ejecutar la consulta preparada
