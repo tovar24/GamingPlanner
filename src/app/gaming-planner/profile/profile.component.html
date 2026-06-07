@@ -30,22 +30,22 @@
 
 <div class="">
   <mat-card class="card-form" *ngIf="this.userRol == 1 || this.userRol == 5">
-    <form [formGroup]="roleForm" (ngSubmit)="updateRol()">
+    <form [formGroup]="roleForm" (ngSubmit)="updateUserRol()">
       <mat-form-field>
         <mat-label>Usuario</mat-label>
-        <mat-select formControlName="idPlayer">
-          <mat-option [value]="item" *ngFor="let item of allUsers">
+        <mat-select formControlName="idUser">
+          <mat-option [value]="item.id" *ngFor="let item of allUsers">
             {{item.name}}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="roleForm.get('idPlayer')">
+        <mat-error *ngIf="roleForm.get('idUser')">
           El usuario es obligatorio.
         </mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Rol</mat-label>
         <mat-select formControlName="idRol">
-          <mat-option [value]="item" *ngFor="let item of allRoles">
+          <mat-option [value]="item.id" *ngFor="let item of allRoles">
             {{item.rol}}
           </mat-option>
         </mat-select>
