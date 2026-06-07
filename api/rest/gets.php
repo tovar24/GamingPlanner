@@ -235,3 +235,29 @@ function getAllTeams($conn) {
       echo $e->getMessage();
     }
   }
+
+  function getGameTeam($conn) {
+    try {
+      // Preparar la consulta SQL para buscar el equipo por medio del id
+      $sql = $conn->prepare("SELECT gt.*, g.date, g.idTournament, g.result FROM game_team gt LEFT JOIN game g ON g.id = gt.idGame WHERE gt.idTeam = :idTeam");
+
+      // Enlazar el valor del id a la consulta preparada
+      $sql->bindValue(':idTeam', $_GET['idTeam']);
+
+      // Ejecutar la consulta preparada
+      $sql->execute();
+
+      // Establecer el modo de extracción de resultados a un array asociativo
+      // y obtener los resultados de la consulta
+      $results = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+      http_response_code(200);
+      header('Content-Type: application/json');
+      echo json_encode($results);
+      exit();
+    } catch (PDOException $e) {
+      // Manejar cualquier excepción PDO que pueda ocurrir
+      http_response_code(404);
+      echo $e->getMessage();
+    }
+  }
