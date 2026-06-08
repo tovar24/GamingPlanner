@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
   public userRol: any;
   public allUsers: any = [];
   public allRoles: any = [];
+  public updateRol: boolean = false;
   public roleForm: FormGroup;
   private currentUserId = this.authService.currentUser?.id;
 
@@ -56,6 +57,11 @@ export class ProfileComponent implements OnInit {
         this.allRoles = response.filter((item: any) => item.id !== 5);
       }
     );
+  }
+
+  enableRoles(item: boolean) {
+    this.updateRol = item;
+    this.roleForm.reset();
   }
 
   updateUserRol() {
