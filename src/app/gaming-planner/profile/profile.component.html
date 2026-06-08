@@ -1,4 +1,15 @@
-<div class="d-flex flex-column justify-content-center align-items-center mt-5">
+<div class="button-container" *ngIf="userRol == 1 || userRol == 5">
+  <button mat-flat-button class="button" *ngIf="!updateRol" (click)="enableRoles(true)">
+     Modificar Roles
+  </button>
+
+  <button mat-flat-button class="button" *ngIf="updateRol" (click)="enableRoles(false)">
+     Mostrar información
+  </button>
+</div>
+
+
+<div class="info">
   <div class="position-relative"
     [ngStyle]="{
       'width.px': 170,
@@ -14,48 +25,50 @@
     >
     account_box
     </mat-icon>
-    <button mat-icon-button class="position-absolute top-0 end-0">
+    <button mat-icon-button *ngIf="updateRol" class="position-absolute top-0 end-0">
       <mat-icon>edit_square</mat-icon>
     </button>
   </div>
-  <div class="mt-5">Nombre</div>
-  <mat-form-field class="mt-3 w-25 white-field" appearance="outline">
-    <input matInput [readonly]="true" [value]="userName">
-  </mat-form-field>
-  <div class="mt-5">Correo Electrónico</div>
-  <mat-form-field class="mt-3 w-25 white-field" appearance="outline">
-    <input matInput [readonly]="true" [value]="userEmail">
-  </mat-form-field>
+  <div *ngIf="!updateRol" class="info">
+    <div class="mt-5">Nombre</div>
+    <mat-form-field class="mt-3 w-25 white-field" appearance="outline">
+      <input matInput [readonly]="true" [value]="userName">
+    </mat-form-field>
+    <div class="mt-5">Correo Electrónico</div>
+    <mat-form-field class="mt-3 w-25 white-field" appearance="outline">
+      <input matInput [readonly]="true" [value]="userEmail">
+    </mat-form-field>
+  </div>
 </div>
 
-<div class="">
-  <mat-card class="card-form" *ngIf="this.userRol == 1 || this.userRol == 5">
-    <form [formGroup]="roleForm" (ngSubmit)="updateUserRol()">
-      <mat-form-field>
-        <mat-label>Usuario</mat-label>
-        <mat-select formControlName="idUser">
+
+<div class="d-flex flex-column justify-content-center align-items-center mt-3" *ngIf="updateRol">
+  <div class="w-25" *ngIf="updateRol && (userRol == 1 || userRol == 5)">
+
+    <form [formGroup]="roleForm" (ngSubmit)="updateUserRol()" class="d-flex flex-column align-items-center">
+
+      <div class="w-100 text-center">Usuario</div>
+      <mat-form-field class="mt-3 w-100 white-field" appearance="outline">
+        <mat-select formControlName="idUser" placeholder="Nombre de usuario">
           <mat-option [value]="item.id" *ngFor="let item of allUsers">
             {{item.name}}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="roleForm.get('idUser')">
-          El usuario es obligatorio.
-        </mat-error>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Rol</mat-label>
-        <mat-select formControlName="idRol">
+
+      <div class="mt-5 w-100 text-center">Rol</div>
+      <mat-form-field class="mt-3 w-100 white-field" appearance="outline">
+        <mat-select formControlName="idRol" placeholder="Rol a escoger">
           <mat-option [value]="item.id" *ngFor="let item of allRoles">
             {{item.rol}}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="roleForm.get('idRol')">
-          El rol es obligatorio
-        </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">
-        Actualizar
+
+      <button mat-flat-button class="rounded-5 mt-5 w-100" type="submit" color="primary" [disabled]="roleForm.invalid" style="height: 50px;">
+        Actualizar Rol
       </button>
+
     </form>
-  </mat-card>
+  </div>
 </div>

@@ -2,3 +2,40 @@
   background-color: white;
   border-radius: 4px;
 }
+
+.info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.button {
+  margin-top: 1%;
+  margin-right: 1%;
+  background-color: #577280;
+  border-radius: 50px;
+  padding: 2%;
+  color: white;
+}
+
+.button-container{
+  display: flex;
+  justify-content: end;
+}
+
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mdc-notched-outline__leading,
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mdc-notched-outline__notch,
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mdc-notched-outline__trailing {
+  border-color: rgba(0, 0, 0, 0.38) !important;
+  border-width: 1px !important;
+}
+
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mat-mdc-floating-label {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+form:not(.form-submitted) ::ng-deep .mdc-text-field--invalid .mat-mdc-select-arrow {
+  color: rgba(0, 0, 0, 0.54) !important;
+}
