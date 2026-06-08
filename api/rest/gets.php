@@ -239,7 +239,7 @@ function getAllTeams($conn) {
   function getGameTeam($conn) {
     try {
       // Preparar la consulta SQL para buscar el equipo por medio del id
-      $sql = $conn->prepare("SELECT gt.*, g.date, g.idTournament, g.result FROM game_team gt LEFT JOIN game g ON g.id = gt.idGame WHERE gt.idTeam = :idTeam");
+      $sql = $conn->prepare("SELECT gt.*, g.date, g.idTournament, g.result, g.visible FROM game_team gt LEFT JOIN game g ON g.id = gt.idGame WHERE gt.idTeam = :idTeam");
 
       // Enlazar el valor del id a la consulta preparada
       $sql->bindValue(':idTeam', $_GET['idTeam']);

@@ -80,6 +80,9 @@
       } else if ($this->requestUri === '/api/rest/posts.php/updateUserRol') {
         updateUserRol($conn, $data);
         return;
+      } else if ($this->requestUri === '/api/rest/posts.php/updateViewGameTeam') {
+        updateViewGameTeam($conn, $data);
+        return;
       }
     }
 
