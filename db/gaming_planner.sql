@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 08-06-2026 a las 12:49:48
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-06-2026 a las 20:20:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -89,7 +89,6 @@ INSERT INTO `activities` (`id`, `date`, `idTipeAct`, `idTeam`) VALUES
 (57, '2026-06-11', 1, 1),
 (58, '2026-06-11', 2, 1),
 (59, '2026-06-11', 2, 1),
-(61, '2026-06-12', 3, 1),
 (62, '2026-06-11', 2, 1),
 (63, '2026-06-11', 3, 1),
 (64, '2026-06-11', 3, 1),
@@ -264,7 +263,8 @@ INSERT INTO `activities` (`id`, `date`, `idTipeAct`, `idTeam`) VALUES
 (237, '2026-07-09', 2, 4),
 (238, '2026-07-10', 1, 4),
 (239, '2026-07-06', 2, 4),
-(240, '2026-07-08', 3, 4);
+(240, '2026-07-08', 3, 4),
+(241, '2026-06-12', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -284,7 +284,14 @@ CREATE TABLE `game` (
 --
 
 INSERT INTO `game` (`id`, `date`, `result`, `idTournament`) VALUES
-(1, '2024-06-01', '13-10', 1);
+(1, '2024-06-01', '13-10', 1),
+(2, '2026-06-07', '13-9', 1),
+(3, '2026-06-08', '11-13', 2),
+(4, '2026-06-06', '15-13', 2),
+(5, '2026-06-01', '13-5', 2),
+(6, '2026-06-02', '13-8', 3),
+(7, '2026-06-03', '2-13', 3),
+(8, '2026-06-04', '18-16', 4);
 
 -- --------------------------------------------------------
 
@@ -304,7 +311,21 @@ CREATE TABLE `game_team` (
 
 INSERT INTO `game_team` (`id`, `idGame`, `idTeam`) VALUES
 (1, 1, 1),
-(2, 1, 2);
+(2, 1, 2),
+(3, 2, 1),
+(4, 2, 3),
+(5, 3, 1),
+(6, 3, 4),
+(7, 4, 1),
+(8, 4, 2),
+(9, 5, 1),
+(10, 5, 3),
+(11, 6, 1),
+(12, 6, 4),
+(13, 7, 1),
+(14, 7, 2),
+(15, 8, 1),
+(16, 8, 3);
 
 -- --------------------------------------------------------
 
@@ -390,7 +411,8 @@ CREATE TABLE `tournament` (
 INSERT INTO `tournament` (`id`, `name`, `url`, `idGame`) VALUES
 (1, 'Circuito Tormenta', NULL, NULL),
 (2, 'Liga Radiante', NULL, NULL),
-(3, 'Clutch Series', 'https://circuitotormenta.com/landing/clutch-series', NULL);
+(3, 'Clutch Series', 'https://circuitotormenta.com/landing/clutch-series', NULL),
+(4, 'ESM Madrid', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -403,6 +425,28 @@ CREATE TABLE `tournament_team` (
   `idTournament` int(11) NOT NULL,
   `idTeam` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tournament_team`
+--
+
+INSERT INTO `tournament_team` (`id`, `idTournament`, `idTeam`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 2, 2),
+(6, 3, 2),
+(7, 1, 2),
+(8, 4, 2),
+(9, 1, 3),
+(10, 3, 3),
+(11, 4, 3),
+(12, 2, 3),
+(13, 1, 4),
+(14, 2, 4),
+(15, 3, 4),
+(16, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -575,19 +619,19 @@ ALTER TABLE `users_token`
 -- AUTO_INCREMENT de la tabla `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=242;
 
 --
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `game_team`
 --
 ALTER TABLE `game_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -611,13 +655,13 @@ ALTER TABLE `tipe_activity`
 -- AUTO_INCREMENT de la tabla `tournament`
 --
 ALTER TABLE `tournament`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tournament_team`
 --
 ALTER TABLE `tournament_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
