@@ -2,6 +2,15 @@
   <h1>Torneos</h1>
 </div>
 
+<!-- <mat-form-field appearance="outline" class="team-select" *ngIf="this.userRol == '5'">
+    <mat-label>Equipo</mat-label>
+    <mat-select [value]="selectedTeam" (selectionChange)="onTeamChange($event.value)">
+      <mat-option *ngFor="let team of teams" [value]="team.id">
+        {{ team.name }}
+      </mat-option>
+    </mat-select>
+</mat-form-field> -->
+
 <mat-card class="card-main rounded-4 mt-4 ms-4">
 
   <div class="container py-4 ps-4">
@@ -12,7 +21,7 @@
             {{ tournament.name }}
           </mat-card-header>
 
-          <mat-card-content class="d-flex flex-column gap-4 mt-4">
+          <mat-card-content class="info d-flex flex-column gap-4 mt-4">
             <div class="d-flex justify-content-around info-matches rounded-4 p-2"
             *ngFor="let game of getGamesByTournament(tournament.idTournament)"
             >
@@ -20,11 +29,18 @@
               <div>{{ game.result }}</div>
               <div>
                 <button
-                  *ngIf="this.userRol == '1' || this.userRol == '2' || this.userRol == '5'"
-                  mat-icon-button class="btn-delete" color="warn" type="button"
+                  *ngIf="game.visible != 1 && this.userRol == '1' || this.userRol == '2' || this.userRol == '5'"
+                  mat-icon-button class="btn-view btn-small" type="button"
                   (click)="deleteGameTeam(game)"
                 >
-                  <mat-icon>delete</mat-icon>
+                  <mat-icon class="btn-view-icon">visibility</mat-icon>
+                </button>
+                <button
+                  *ngIf="game.visible == 1 && this.userRol == '1' || this.userRol == '2' || this.userRol == '5'"
+                  mat-icon-button class="btn-view btn-small" type="button"
+                  (click)="deleteGameTeam(game)"
+                >
+                  <mat-icon class="btn-view-icon">visibility_off</mat-icon>
                 </button>
               </div>
             </div>
