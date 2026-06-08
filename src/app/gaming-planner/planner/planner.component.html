@@ -1,5 +1,13 @@
 <div class="d-flex align-items-center gap-5 pt-4 ps-4">
   <h1>Planificador de {{ getSelectedMonthName() }} de {{ selectedYear }}</h1>
+  <mat-form-field appearance="outline" class="team-select" *ngIf="this.userRol == '5'">
+      <mat-label>Equipo</mat-label>
+      <mat-select [value]="selectedTeam" (selectionChange)="onTeamChange($event.value)">
+        <mat-option *ngFor="let team of teams" [value]="team.id">
+          {{ team.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 </div>
 
 <div class="main">

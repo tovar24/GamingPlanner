@@ -19,6 +19,7 @@ export class PlannerComponent {
   public user?: User;
   activitiesList: any = [];
   data: any = [];
+  selectedTeam: any;
   selectedYear: any = new Date().getFullYear();
   selectedMonth: any = new Date().getMonth() + 1;
   startMonth: any;
@@ -29,6 +30,7 @@ export class PlannerComponent {
   currentWeekDate = new Date();
   userRol: any;
   submitted = false;
+  teams: any[] = [];
   years: any[] = [];
   months = [
   { value: 1, name: 'Enero' },
@@ -78,9 +80,23 @@ export class PlannerComponent {
       date: formattedDate,
       idTipeAct: Array.isArray(idTipeAct) ? idTipeAct[0] : idTipeAct,
       dayOfWeek: '',
-      idTeam: this.authService.currentUser?.idTeam
+      idTeam: this.selectedTeam ? this.selectedTeam : this.authService.currentUser?.idTeam
     };
 
+  }
+
+  onTeamChange(idTeam: any) {
+    this.selectedTeam = idTeam;
+    this.setParameters();
+    this.getActivitiesTeam();
+  }
+
+  getAllTeams() {
+    this.plannerService.getAllTeams().subscribe(
+      (response: any) => {
+        this.teams = response;
+      }
+    );
   }
 
   parseLocalDate(date: string): Date {
@@ -89,7 +105,7 @@ export class PlannerComponent {
   }
 
   async getActivitiesTeam() {
-    const idTeam = this.authService.currentUser?.idTeam;
+    const idTeam = this.selectedTeam ? this.selectedTeam : this.authService.currentUser?.idTeam;
     if (!idTeam) return;
 
     this.setParametersMonthYear();
@@ -308,6 +324,9 @@ export class PlannerComponent {
     this.selectedYear = today.getFullYear();
     this.selectedMonth = today.getMonth() + 1;
     this.currentWeekDate = today;
+
+    this.selectedTeam = this.authService.currentUser?.idTeam;
+    this.getAllTeams();
 
     this.setParameters();
     this.getActivitiesTeam();

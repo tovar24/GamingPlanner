@@ -8,6 +8,10 @@ export class PlannerService {
 
   constructor(private http: HttpClient) { }
 
+  getAllTeams(): Observable<any> {
+    return this.http.get(`${ this.baseUrl }/getAllTeams`);
+  }
+
   addActivities(data: any): Observable<any> {
     const jsonData = JSON.stringify(data);
     return this.http.post(`${this.baseUrl}/insertActivities`, jsonData);

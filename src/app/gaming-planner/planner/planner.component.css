@@ -30,6 +30,10 @@
   max-width: 25%;
 }
 
+.team-select{
+  margin-top: 1%;
+}
+
 .week-table-container {
   max-height: 450px;
   overflow-y: auto;
