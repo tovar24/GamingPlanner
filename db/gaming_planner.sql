@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2026 a las 20:20:41
+-- Tiempo de generación: 08-06-2026 a las 23:11:29
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -276,22 +276,25 @@ CREATE TABLE `game` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
   `result` varchar(10) DEFAULT NULL,
-  `idTournament` int(11) NOT NULL
+  `idTournament` int(11) NOT NULL,
+  `visible` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `game`
 --
 
-INSERT INTO `game` (`id`, `date`, `result`, `idTournament`) VALUES
-(1, '2024-06-01', '13-10', 1),
-(2, '2026-06-07', '13-9', 1),
-(3, '2026-06-08', '11-13', 2),
-(4, '2026-06-06', '15-13', 2),
-(5, '2026-06-01', '13-5', 2),
-(6, '2026-06-02', '13-8', 3),
-(7, '2026-06-03', '2-13', 3),
-(8, '2026-06-04', '18-16', 4);
+INSERT INTO `game` (`id`, `date`, `result`, `idTournament`, `visible`) VALUES
+(1, '2024-06-01', '13-10', 1, 0),
+(2, '2026-06-07', '13-9', 1, 1),
+(3, '2026-06-08', '11-13', 2, 1),
+(4, '2026-06-06', '15-13', 2, 1),
+(5, '2026-06-01', '13-5', 2, 1),
+(6, '2026-06-02', '13-8', 3, 1),
+(7, '2026-06-03', '2-13', 3, 1),
+(8, '2026-06-04', '18-16', 4, 1),
+(9, '2026-06-10', '13-6', 2, 1),
+(10, '2026-06-09', '7-13', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -325,7 +328,9 @@ INSERT INTO `game_team` (`id`, `idGame`, `idTeam`) VALUES
 (13, 7, 1),
 (14, 7, 2),
 (15, 8, 1),
-(16, 8, 3);
+(16, 8, 3),
+(17, 9, 1),
+(18, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -468,7 +473,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `idRol`, `idTeam`) VALUES
-(1, 'ADMIN', 'admin1234@gmail.com', 'c93ccd78b2076528346216b3b2f701e6', 1, NULL),
+(1, 'ADMIN', 'admin1234@gmail.com', 'c93ccd78b2076528346216b3b2f701e6', 2, NULL),
 (2, 'pruebaAPI', 'prueba1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 2, NULL),
 (5, 'prueba2', 'prueba2@gmail.com', '12345', 3, NULL),
 (7, 'Camilo', 'camilo@gmail.com', '$2y$10$vM8x4NOk/nUsIn7M8F6CQODuFCNojlCaAZMjvxZC4Xo2QCC2.tbW2', 3, NULL),
@@ -625,13 +630,13 @@ ALTER TABLE `activities`
 -- AUTO_INCREMENT de la tabla `game`
 --
 ALTER TABLE `game`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `game_team`
 --
 ALTER TABLE `game_team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
