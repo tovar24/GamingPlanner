@@ -16,4 +16,13 @@ export class TournamentService {
     return this.http.get(`${ this.baseUrl }/getGameTeam?idTeam=` + idTeam);
   }
 
+  getAllTeams(): Observable<any> {
+    return this.http.get(`${ this.baseUrl }/getAllTeams`);
+  }
+
+  updateViewGameTeam(data: any): Observable<any> {
+    const jsonData = JSON.stringify(data);
+    return this.http.put(`${ this.baseUrl }/updateViewGameTeam`, jsonData);
+  }
+
 }

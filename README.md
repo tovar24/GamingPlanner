@@ -10,6 +10,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Spanish
 
+Instalar [XAMPP 8.2](https://www.apachefriends.org/es/index.html).
+
+Instalar [PHP](https://www.php.net/).
+
 Instalar [node.js](https://nodejs.org/en).
 
 Instalar AngularCLI 17.3.5 `npm install -g @angular/cli`.
@@ -23,6 +27,10 @@ Dentro de la carpeta `db` está el script SQL de la base de datos para importarl
 Ejecutar el comando `ng serve -o` para iniciar la app.
 
 ## English
+
+Install [XAMPP 8.2](https://www.apachefriends.org/es/index.html).
+
+Instalar [PHP](https://www.php.net/).
 
 Install [node.js](https://nodejs.org/en).
 
